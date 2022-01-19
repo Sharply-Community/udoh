@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:marriage/exports.dart';
+import 'package:sizer/sizer.dart';
 
 enum Gender { login, register }
 
@@ -23,12 +24,6 @@ class _IntroSliderPageState extends State<IntroSliderPage> {
   }
 
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     Widget _buildImage(String assetName, [double width = 350]) {
       return Image.asset(
@@ -41,41 +36,45 @@ class _IntroSliderPageState extends State<IntroSliderPage> {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          GestureDetector(
-      onTap: (){
+          Expanded(
+            child: GestureDetector(
+              onTap: (){
         setState(() {
-          selectedIndex = Gender.login;
+            selectedIndex = Gender.login;
         });
       },
-          child: Container(
-            height: 60,
-            width: 175,
-            decoration: BoxDecoration(
-                color: selectedIndex == Gender.login ? activeCardColor: inActiveCardColor,
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(
-                  color: color,
-                )),
-            child: const Center(child: Text('LOGIN',style: TextStyle(fontWeight: FontWeight.bold),)),
-          ),
-      ),
-          const SizedBox(width: 15,),
-          GestureDetector(
-            onTap: () {
-              setState(() {
-                selectedIndex = Gender.register;
-              });
-            },
-            child: Container(
-              height: 60,
-              width: 175,
+              child: Container(
+              height: 55.0,
+              width: 170.w,
               decoration: BoxDecoration(
-                color: selectedIndex == Gender.register ? activeCardColor: inActiveCardColor,
+                  color: selectedIndex == Gender.login ? activeCardColor: inActiveCardColor,
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
                     color: color,
                   )),
-              child: const Center(child: Text('REGISTER',style: TextStyle(fontWeight: FontWeight.bold),)),
+              child: const Center(child: Text('LOGIN',style: TextStyle(fontWeight: FontWeight.bold),)),
+            ),
+            ),
+          ),
+          const SizedBox(width: 15,),
+          Expanded(
+            child: GestureDetector(
+              onTap: () {
+                setState(() {
+                  selectedIndex = Gender.register;
+                });
+              },
+              child: Container(
+                height: 55.0,
+                width: 170.w,
+                decoration: BoxDecoration(
+                  color: selectedIndex == Gender.register ? activeCardColor: inActiveCardColor,
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(
+                      color: color,
+                    )),
+                child: const Center(child: Text('REGISTER',style: TextStyle(fontWeight: FontWeight.bold),)),
+              ),
             ),
           )
         ],
@@ -102,7 +101,7 @@ class _IntroSliderPageState extends State<IntroSliderPage> {
             image: _buildImage(
               'boarding.webp',
             ),
-            footer: buildFooter()),
+            footer: buildFooter() ),
         PageViewModel(
           title: "Marriage",
           body: "A successful marriage requires falling in love"
