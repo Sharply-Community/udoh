@@ -142,9 +142,11 @@ class _IntroSliderPageState extends State<IntroSliderPage> {
           )),
       showNextButton: true,
       skip: const Text('Skip'),
-      next: const Align(child: Icon(Icons.arrow_forward,color: color,),alignment: Alignment.centerRight,),
-      done: const Text("Done",
-          style: TextStyle(color: color, fontWeight: FontWeight.bold)),
+      next: const Align(child: Icon(Icons.arrow_forward,color: color,size: 30,),alignment: Alignment.centerRight,),
+      done: const Align(alignment: Alignment.centerRight,
+        child: Text("Done",
+            style: TextStyle(color: color, fontWeight: FontWeight.bold,fontSize: 20)),
+      ),
       onDone: () => _onIntroEnd(context),
     );
   }
