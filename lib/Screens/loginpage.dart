@@ -66,18 +66,20 @@ class LoginPage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(right: 15, left: 15),
                     child: GestureDetector(
-                      onTap:(){
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => const GoogleLogin()));
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const GoogleLogin()));
                       },
                       child: containerWidget(
                         icon: FontAwesomeIcons.google,
                         colors: color,
                         text: 'LOG IN WITH GOOGLE',
                         textStyle: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold),
+                            color: Colors.white,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
                     //
@@ -96,16 +98,24 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                   sizedBox,
-                  const Padding(
-                    padding: EdgeInsets.only(right: 15, left: 15),
-                    child: containerWidget(
-                      icon: FontAwesomeIcons.phoneAlt,
-                      text: "LOG IN WITH NUMBER",
-                      colors: color,
-                      textStyle: TextStyle(
-                          color: Colors.white,
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => PhoneLoginScreen()));
+                    },
+                    child: const Padding(
+                      padding: EdgeInsets.only(right: 15, left: 15),
+                      child: containerWidget(
+                        icon: FontAwesomeIcons.phoneAlt,
+                        text: "LOG IN WITH NUMBER",
+                        colors: color,
+                        textStyle: TextStyle(
+                            color: Colors.white,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                   ),
                 ],
