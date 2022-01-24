@@ -1,4 +1,4 @@
-// ignore_for_file: camel_case_types
+// ignore_for_file: camel_case_types, recursive_getters
 
 import 'package:flutter/material.dart';
 import 'package:marriage/exports.dart';

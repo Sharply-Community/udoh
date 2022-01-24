@@ -1,10 +1,10 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:flutter/services.dart';
+import 'package:marriage/exports.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:marriage/constants/constant.dart';
 
 class PhoneLoginScreen extends StatefulWidget {
   const PhoneLoginScreen({Key? key}) : super(key: key);
@@ -21,7 +21,7 @@ class _PhoneLoginScreenState extends State<PhoneLoginScreen> {
   void initState() {
     controller = TextEditingController();
     controller.addListener(() {
-      final isButtonActive = controller.text.isEmpty;
+      final isButtonActive = controller.text.isNotEmpty;
       setState(() => this.isButtonActive = isButtonActive);
     });
     super.initState();
@@ -54,60 +54,62 @@ class _PhoneLoginScreenState extends State<PhoneLoginScreen> {
                 ),
               ),
             ),
-            SizedBox(
-              height: 20,
-            ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.only(top: 5.0),
               child: Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30),
+                    padding: const EdgeInsets.only(left: 30, bottom: 10),
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        'My Number is',
+                        'My number is',
                         style: TextStyle(
                             color: Colors.black, fontWeight: FontWeight.bold),
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: CountryCodePicker(
-                        initialSelection: 'EN',
-                        showCountryOnly: false,
-                      ),
-                    ),
-                  ),
-                  // SizedBox(
-                  //   width: 10,
-                  // ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 27),
-                    child: TextField(
+                  Container(
+                    padding: const EdgeInsets.only(left: 20, right: 20),
+                    child: TextFormField(
                       controller: controller,
                       inputFormatters: <TextInputFormatter>[
                         FilteringTextInputFormatter.allow(RegExp(r'[0-9]'))
                       ],
-                      decoration: InputDecoration(
-                        // hintText: '08102871334',
-                        border: OutlineInputBorder(),
-                      ),
                       keyboardType: TextInputType.number,
-                      textInputAction: TextInputAction.done,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      decoration: InputDecoration(
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide:
+                                const BorderSide(color: color, width: 2.0),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide:
+                                const BorderSide(color: color, width: 5.0),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          prefix: Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 8),
+                            child: Text(
+                              '+234',
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.bold),
+                            ),
+                          )),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
             SizedBox(
-              height: 20,
+              height: 15,
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 30),
+              padding: EdgeInsets.only(left: 30, right: 30, top: 5),
               child: Text(
                   'When you tap continue, marriage will send you a text with verification code.'
                   ' Message and data rates may apply. The verified phone number can be used to login.'
@@ -118,20 +120,25 @@ class _PhoneLoginScreenState extends State<PhoneLoginScreen> {
             ),
             ElevatedButton(
                 style: ElevatedButton.styleFrom(
+                  shadowColor: color,
                   onSurface: color,
                   primary: color,
-                  maximumSize: Size.fromHeight(45),
-                  fixedSize: Size.fromWidth(350),
+                  maximumSize: const Size.fromHeight(45),
+                  fixedSize: const Size.fromWidth(350),
                 ),
                 onPressed: isButtonActive
                     ? () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => OtpScreen()));
                         setState(() => isButtonActive = false);
                         controller.clear();
                       }
                     : null,
                 child: Text(
                   'Continue',
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: const TextStyle(fontWeight: FontWeight.bold),
                 ))
           ],
         ),
