@@ -38,42 +38,62 @@ class _IntroSliderPageState extends State<IntroSliderPage> {
         children: [
           Expanded(
             child: GestureDetector(
-              onTap: (){
-        setState(() {
-            selectedIndex = Gender.login;
-        });
-      },
+              onTap: () {
+                setState(() {
+                  selectedIndex = Gender.login;
+                });
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const LoginPage()));
+              },
               child: Container(
-              height: 55.0,
-              width: 170.w,
-              decoration: BoxDecoration(
-                  color: selectedIndex == Gender.login ? activeCardColor: inActiveCardColor,
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(
-                    color: color,
-                  )),
-              child: const Center(child: Text('LOGIN',style: TextStyle(fontWeight: FontWeight.bold),)),
-            ),
+                height: 55.0,
+                width: 170.w,
+                decoration: BoxDecoration(
+                    color: selectedIndex == Gender.login
+                        ? activeCardColor
+                        : inActiveCardColor,
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(
+                      color: color,
+                    )),
+                child: const Center(
+                    child: Text(
+                  'LOGIN',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                )),
+              ),
             ),
           ),
-          const SizedBox(width: 15,),
+          const SizedBox(
+            width: 15,
+          ),
           Expanded(
             child: GestureDetector(
               onTap: () {
                 setState(() {
                   selectedIndex = Gender.register;
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const RegisterScree()));
                 });
               },
               child: Container(
                 height: 55.0,
                 width: 170.w,
                 decoration: BoxDecoration(
-                  color: selectedIndex == Gender.register ? activeCardColor: inActiveCardColor,
+                    color: selectedIndex == Gender.register
+                        ? activeCardColor
+                        : inActiveCardColor,
                     borderRadius: BorderRadius.circular(10),
                     border: Border.all(
                       color: color,
                     )),
-                child: const Center(child: Text('REGISTER',style: TextStyle(fontWeight: FontWeight.bold),)),
+                child: const Center(
+                    child: Text(
+                  'REGISTER',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                )),
               ),
             ),
           )
@@ -101,32 +121,31 @@ class _IntroSliderPageState extends State<IntroSliderPage> {
             image: _buildImage(
               'boarding.webp',
             ),
-            footer: buildFooter() ),
+            footer: buildFooter()),
         PageViewModel(
           title: "Marriage",
           body: "A successful marriage requires falling in love"
               "many times, always with the same person.",
           decoration: pageDecoration,
           image: _buildImage('undraw_wedding.webp'),
-      footer: buildFooter(),
+          footer: buildFooter(),
         ),
         PageViewModel(
-          title: "Marriage",
-          body: "Love doesn’t just sit there, like a stone, it has to be made, "
-              "like bread; remade all the time, made new.",
-          decoration: pageDecoration,
-          image: _buildImage('undraw_winners.webp'),
-            footer: buildFooter()
-        ),
+            title: "Marriage",
+            body:
+                "Love doesn’t just sit there, like a stone, it has to be made, "
+                "like bread; remade all the time, made new.",
+            decoration: pageDecoration,
+            image: _buildImage('undraw_winners.webp'),
+            footer: buildFooter()),
         PageViewModel(
-          title: "Marriage",
-          body: "A great marriage isn’t when the perfect "
-              "couples comes together but when an imperfect couples "
-              "leans to enjoy their differences,",
-          decoration: pageDecoration,
-          image: _buildImage('undraw_pure.webp'),
-            footer: buildFooter()
-        ),
+            title: "Marriage",
+            body: "A great marriage isn’t when the perfect "
+                "couples comes together but when an imperfect couples "
+                "leans to enjoy their differences,",
+            decoration: pageDecoration,
+            image: _buildImage('undraw_pure.webp'),
+            footer: buildFooter()),
       ];
     }
 
@@ -142,10 +161,19 @@ class _IntroSliderPageState extends State<IntroSliderPage> {
           )),
       showNextButton: true,
       skip: const Text('Skip'),
-      next: const Align(child: Icon(Icons.arrow_forward,color: color,size: 30,),alignment: Alignment.centerRight,),
-      done: const Align(alignment: Alignment.centerRight,
+      next: const Align(
+        child: Icon(
+          Icons.arrow_forward,
+          color: color,
+          size: 30,
+        ),
+        alignment: Alignment.centerRight,
+      ),
+      done: const Align(
+        alignment: Alignment.centerRight,
         child: Text("Done",
-            style: TextStyle(color: color, fontWeight: FontWeight.bold,fontSize: 20)),
+            style: TextStyle(
+                color: color, fontWeight: FontWeight.bold, fontSize: 20)),
       ),
       onDone: () => _onIntroEnd(context),
     );

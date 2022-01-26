@@ -1,11 +1,11 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:marriage/exports.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:marriage/exports.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class RegisterScree extends StatelessWidget {
+  const RegisterScree({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -70,12 +70,12 @@ class LoginPage extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const GoogleLogin()));
+                                builder: (context) => const GoogleRegister()));
                       },
                       child: containerWidget(
                         icon: FontAwesomeIcons.google,
                         colors: color,
-                        text: 'LOG IN WITH GOOGLE',
+                        text: 'REGISTER WITH GOOGLE',
                         textStyle: TextStyle(
                             color: Colors.white,
                             fontSize: 15,
@@ -94,7 +94,7 @@ class LoginPage extends StatelessWidget {
                           fontSize: 15,
                           fontWeight: FontWeight.bold),
                       colors: color,
-                      text: "LOG IN WITH FACEBOOK",
+                      text: "REGISTER WITH FACEBOOK",
                     ),
                   ),
                   sizedBox,
@@ -109,7 +109,7 @@ class LoginPage extends StatelessWidget {
                       padding: EdgeInsets.only(right: 15, left: 15),
                       child: containerWidget(
                         icon: FontAwesomeIcons.phoneAlt,
-                        text: "LOG IN WITH NUMBER",
+                        text: "REGISTER WITH NUMBER",
                         colors: color,
                         textStyle: TextStyle(
                             color: Colors.white,

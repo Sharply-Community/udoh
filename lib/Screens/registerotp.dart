@@ -1,27 +1,24 @@
-// ignore_for_file: non_constant_identifier_names, sized_box_for_whitespace
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:marriage/exports.dart';
 
-class OtpScreen extends StatefulWidget {
-  const OtpScreen({Key? key}) : super(key: key);
+class RegisterOtp extends StatefulWidget {
+  const RegisterOtp({Key? key}) : super(key: key);
 
   @override
-  _OtpScreenState createState() => _OtpScreenState();
+  _RegisterOtpState createState() => _RegisterOtpState();
 }
 
-class _OtpScreenState extends State<OtpScreen> {
+class _RegisterOtpState extends State<RegisterOtp> {
   late TextEditingController controller;
-  bool isButtonActive2 = true;
+  bool isButtonActive4 = true;
 
   @override
   void initState() {
     controller = TextEditingController();
     controller.addListener(() {
-      final isButtonActive2 = controller.text.isNotEmpty;
-      setState(() => this.isButtonActive2 = isButtonActive2);
+      final isButtonActive4 = controller.text.isNotEmpty;
+      setState(() => this.isButtonActive4 = isButtonActive4);
     });
     super.initState();
   }
@@ -119,27 +116,37 @@ class _OtpScreenState extends State<OtpScreen> {
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      shadowColor: color,
-                      onSurface: color,
-                      primary: color,
-                      maximumSize: const Size.fromHeight(45),
-                      fixedSize: const Size.fromWidth(350),
-                    ),
-                    onPressed: isButtonActive2
-                        ? () {
-                            setState(() => isButtonActive2 = false);
-                            controller.clear();
-                          }
-                        : null,
-                    child: const Text(
-                      'Continue',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ))
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const UpdateEmail()));
+                  },
+                  child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        shadowColor: color,
+                        onSurface: color,
+                        primary: color,
+                        maximumSize: const Size.fromHeight(45),
+                        fixedSize: const Size.fromWidth(350),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const UpdateEmail()));
+                        setState(() => isButtonActive4 = false);
+                        controller.clear();
+                      },
+                      child: const Text(
+                        'Continue',
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      )),
+                )
               ],
             ),
           ),

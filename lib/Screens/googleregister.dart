@@ -1,11 +1,11 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:marriage/exports.dart';
 
-class GoogleLogin extends StatelessWidget {
-  const GoogleLogin({Key? key}) : super(key: key);
+class GoogleRegister extends StatelessWidget {
+  const GoogleRegister({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +22,8 @@ class GoogleLogin extends StatelessWidget {
             width: double.infinity,
             child: Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(
+                const Padding(
+                  padding: EdgeInsets.only(
                     top: 10,
                   ),
                   child: Text(
@@ -37,7 +37,7 @@ class GoogleLogin extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Column(
-                    children: [
+                    children: const [
                       Text(
                         'Choose an account',
                         style: TextStyle(
@@ -162,7 +162,7 @@ class GoogleLogin extends StatelessWidget {
                       ),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
+                        children: const [
                           Text(
                             'Add another account',
                             style: TextStyle(
@@ -186,7 +186,7 @@ class GoogleLogin extends StatelessWidget {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                   child: Column(
-                    children: [
+                    children: const [
                       Text(
                         "To continue, Google will share your name, email address, and profile picture wit Marriag. Before using this app,",
                         style: TextStyle(color: Colors.white),

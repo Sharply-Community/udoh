@@ -7,3 +7,8 @@ export 'package:marriage/widgets/loginWidget.dart';
 export 'package:marriage/Screens/googlelogin.dart';
 export 'package:marriage/Screens/phoneloginscreen.dart';
 export 'package:marriage/Screens/otpscreen.dart';
+export 'package:marriage/Screens/register.dart';
+export 'package:marriage/Screens/googleregister.dart';
+export 'package:marriage/Screens/update.dart';
+export 'package:marriage/Screens/registerotp.dart';
+export 'package:marriage/Screens/update.dart';
