@@ -73,6 +73,8 @@ class RegisterScree extends StatelessWidget {
                                 builder: (context) => const GoogleRegister()));
                       },
                       child: containerWidget(
+                        heightSize: 45,
+                        iconColors: iconColorWhite,
                         icon: FontAwesomeIcons.google,
                         colors: color,
                         text: 'REGISTER WITH GOOGLE',
@@ -103,11 +105,13 @@ class RegisterScree extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => PhoneLoginScreen()));
+                              builder: (context) => PhoneRegister()));
                     },
                     child: const Padding(
                       padding: EdgeInsets.only(right: 15, left: 15),
                       child: containerWidget(
+                        heightSize: 45,
+                        iconColors: iconColorWhite,
                         icon: FontAwesomeIcons.phoneAlt,
                         text: "REGISTER WITH NUMBER",
                         colors: color,

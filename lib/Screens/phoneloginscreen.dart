@@ -40,7 +40,7 @@ class _PhoneLoginScreenState extends State<PhoneLoginScreen> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              padding: aligntext,
               child: Align(
                 alignment: Alignment.topLeft,
                 child: GestureDetector(
@@ -59,7 +59,7 @@ class _PhoneLoginScreenState extends State<PhoneLoginScreen> {
               child: Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 30, bottom: 10),
+                    padding: paddingText,
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: Text(

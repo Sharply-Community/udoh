@@ -41,7 +41,7 @@ class _OtpScreenState extends State<OtpScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            padding: aligntext,
             child: Align(
               alignment: Alignment.topLeft,
               child: GestureDetector(
@@ -56,7 +56,7 @@ class _OtpScreenState extends State<OtpScreen> {
             ),
           ),
           Container(
-            padding: const EdgeInsets.only(left: 25, right: 25, top: 10),
+            padding: paddingText,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -68,7 +68,7 @@ class _OtpScreenState extends State<OtpScreen> {
                       fontWeight: FontWeight.bold),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 5),
+                  padding: paddingSecondText,
                   child: Row(
                     children: [
                       const Text(

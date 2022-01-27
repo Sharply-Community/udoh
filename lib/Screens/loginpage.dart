@@ -73,6 +73,8 @@ class LoginPage extends StatelessWidget {
                                 builder: (context) => const GoogleLogin()));
                       },
                       child: containerWidget(
+                        heightSize: 45,
+                        iconColors: iconColorWhite,
                         icon: FontAwesomeIcons.google,
                         colors: color,
                         text: 'LOG IN WITH GOOGLE',
@@ -108,6 +110,8 @@ class LoginPage extends StatelessWidget {
                     child: const Padding(
                       padding: EdgeInsets.only(right: 15, left: 15),
                       child: containerWidget(
+                        heightSize: 45,
+                        iconColors: iconColorWhite,
                         icon: FontAwesomeIcons.phoneAlt,
                         text: "LOG IN WITH NUMBER",
                         colors: color,

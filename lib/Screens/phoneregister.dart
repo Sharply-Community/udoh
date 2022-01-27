@@ -39,7 +39,7 @@ class _PhoneRegisterState extends State<PhoneRegister> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              padding: aligntext,
               child: Align(
                 alignment: Alignment.topLeft,
                 child: GestureDetector(
@@ -81,6 +81,7 @@ class _PhoneRegisterState extends State<PhoneRegister> {
                         fontWeight: FontWeight.bold,
                       ),
                       decoration: InputDecoration(
+                          hintText: "08102871334",
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                             borderSide:
@@ -128,9 +129,10 @@ class _PhoneRegisterState extends State<PhoneRegister> {
                 onPressed: isButtonActive3
                     ? () {
                         Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => OtpScreen()));
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => RegisterOtp()),
+                        );
                         setState(() => isButtonActive3 = false);
                         controller.clear();
                       }

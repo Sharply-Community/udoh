@@ -5,12 +5,18 @@ import 'package:marriage/exports.dart';
 
 class containerWidget extends StatelessWidget {
   final TextStyle textStyle;
+  final double heightSize;
+  final Border? border;
   final String text;
   final IconData? icon;
-  final Color colors;
+  final iconColors;
+  final Color? colors;
   const containerWidget({
+    required this.heightSize,
+    this.iconColors,
+    this.border,
     required this.textStyle,
-    required this.colors,
+    this.colors,
     required this.text,
     this.icon,
     Key? key,
@@ -20,9 +26,10 @@ class containerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Container(
-        height: 45,
+        height: heightSize,
         width: double.infinity,
         decoration: BoxDecoration(
+          border: border,
           color: colors,
           borderRadius: BorderRadius.circular(10),
         ),
@@ -32,14 +39,16 @@ class containerWidget extends StatelessWidget {
             Icon(
               icon,
               size: 20,
-              color: iconColorWhite,
+              color: iconColors,
             ),
             const SizedBox(
               width: 35,
             ),
-            Text(
-              text,
-              style: textStyle,
+            Center(
+              child: Text(
+                text,
+                style: textStyle,
+              ),
             ),
           ],
         ),

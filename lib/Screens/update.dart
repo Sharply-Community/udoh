@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:marriage/constants/constant.dart';
 import 'package:sizer/sizer.dart';
 
 class UpdateEmail extends StatefulWidget {
@@ -31,32 +32,37 @@ class _UpdateEmailState extends State<UpdateEmail> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 10, right: 20, left: 20),
+            padding: paddingText,
             child: const Text(
               'My first name is',
-              style:
-                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20),
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(top: 20, left: 20, right: 20),
+            padding: EdgeInsets.only(top: 10, left: 20, right: 20),
             child: Container(
               height: 85,
               width: 100.w,
               child: AspectRatio(
                 aspectRatio: 1.5,
                 child: TextField(
-                    showCursor: false,
-                    readOnly: false,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 24),
-                    keyboardType: TextInputType.number,
-                    maxLength: 1,
-                    decoration: InputDecoration(
-                      hintText: 'Abdulmuhsin',
-                      counter: const Offstage(),
-                    )),
+                  showCursor: false,
+                  readOnly: false,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 24),
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: color)),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: color, width: 2.0),
+                    ),
+                    hintText: 'First Name',
+                  ),
+                ),
               ),
             ),
           ),
