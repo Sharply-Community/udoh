@@ -13,3 +13,5 @@ export 'package:marriage/Screens/update.dart';
 export 'package:marriage/Screens/registerotp.dart';
 export 'package:marriage/Screens/phoneregister.dart';
 export 'package:marriage/Screens/enteremail.dart';
+export 'package:marriage/Screens/date.dart';
+export 'package:marriage/Screens/choosegender.dart';

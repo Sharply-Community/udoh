@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/services.dart';
 import 'package:marriage/exports.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class PhoneLoginScreen extends StatefulWidget {
   const PhoneLoginScreen({Key? key}) : super(key: key);
@@ -39,70 +38,37 @@ class _PhoneLoginScreenState extends State<PhoneLoginScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            Padding(
-              padding: aligntext,
-              child: Align(
-                alignment: Alignment.topLeft,
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: Icon(
-                    FontAwesomeIcons.arrowLeft,
-                    color: Colors.grey,
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 5.0),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: paddingText,
-                    child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        'My number is',
-                        style: TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.only(left: 20, right: 20),
-                    child: TextFormField(
-                      controller: controller,
-                      inputFormatters: <TextInputFormatter>[
-                        FilteringTextInputFormatter.allow(RegExp(r'[0-9]'))
-                      ],
-                      keyboardType: TextInputType.number,
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      decoration: InputDecoration(
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide:
-                                const BorderSide(color: color, width: 2.0),
-                          ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide:
-                                const BorderSide(color: color, width: 5.0),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          prefix: Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 8),
-                            child: Text(
-                              '+234',
-                              style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold),
-                            ),
-                          )),
-                    ),
-                  ),
+            newAlign(context),
+            textAlign('My Birthday is...'),
+            Container(
+              padding: const EdgeInsets.only(left: 20, right: 20),
+              child: TextFormField(
+                controller: controller,
+                inputFormatters: <TextInputFormatter>[
+                  FilteringTextInputFormatter.allow(RegExp(r'[0-9]'))
                 ],
+                keyboardType: TextInputType.number,
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+                decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: const BorderSide(color: color, width: 2.0),
+                    ),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: const BorderSide(color: color, width: 5.0),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    prefix: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 8),
+                      child: Text(
+                        '+234',
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                    )),
               ),
             ),
             SizedBox(

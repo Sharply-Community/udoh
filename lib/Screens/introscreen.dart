@@ -133,14 +133,14 @@ class _IntroSliderPageState extends State<IntroSliderPage> {
         PageViewModel(
             title: "Marriage",
             body:
-                "Love doesn’t just sit there, like a stone, it has to be made, "
+                "Love doesn/'t just sit there, like a stone, it has to be made, "
                 "like bread; remade all the time, made new.",
             decoration: pageDecoration,
             image: _buildImage('undraw_winners.webp'),
             footer: buildFooter()),
         PageViewModel(
             title: "Marriage",
-            body: "A great marriage isn’t when the perfect "
+            body: "A great marriage isn/'t when the perfect "
                 "couples comes together but when an imperfect couples "
                 "leans to enjoy their differences,",
             decoration: pageDecoration,

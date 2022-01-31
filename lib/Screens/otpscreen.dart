@@ -2,7 +2,6 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:marriage/exports.dart';
 
 class OtpScreen extends StatefulWidget {
@@ -40,33 +39,13 @@ class _OtpScreenState extends State<OtpScreen> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: aligntext,
-            child: Align(
-              alignment: Alignment.topLeft,
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: const Icon(
-                  FontAwesomeIcons.arrowLeft,
-                  color: Colors.grey,
-                ),
-              ),
-            ),
-          ),
+          newAlign(context),
           Container(
             padding: paddingText,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'My code is..',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold),
-                ),
+                textAlign('My code is..'),
                 Padding(
                   padding: paddingSecondText,
                   child: Row(
@@ -119,7 +98,7 @@ class _OtpScreenState extends State<OtpScreen> {
                     ],
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 ElevatedButton(

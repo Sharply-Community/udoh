@@ -38,32 +38,8 @@ class _EnterEmailState extends State<EnterEmail> {
       body: SafeArea(
         child: Column(
           children: [
-            Align(
-              alignment: Alignment.topLeft,
-              child: InkWell(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: Padding(
-                  padding: aligntext,
-                  child: Icon(
-                    FontAwesomeIcons.arrowLeft,
-                    color: Colors.grey,
-                  ),
-                ),
-              ),
-            ),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Padding(
-                padding: EdgeInsets.only(left: 30, top: 20, bottom: 15),
-                child: Text(
-                  'What\'s your email?',
-                  style: TextStyle(
-                      color: Colors.black, fontWeight: FontWeight.bold),
-                ),
-              ),
-            ),
+            newAlign(context),
+            textAlign('What\'s your email?'),
             Padding(
               padding: EdgeInsets.only(left: 30),
               child: Text(

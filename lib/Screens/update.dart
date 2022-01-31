@@ -1,9 +1,8 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:marriage/constants/constant.dart';
 import 'package:sizer/sizer.dart';
+import 'package:marriage/exports.dart';
 
 class UpdateEmail extends StatefulWidget {
   const UpdateEmail({Key? key}) : super(key: key);
@@ -13,42 +12,42 @@ class UpdateEmail extends StatefulWidget {
 }
 
 class _UpdateEmailState extends State<UpdateEmail> {
+  late TextEditingController _controller;
+  bool btnButton = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController();
+    _controller.addListener(() {
+      final btnButton = _controller.text.isNotEmpty;
+      setState(() => this.btnButton = btnButton);
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
           child: Column(
         children: [
-          Align(
-            alignment: Alignment.topLeft,
-            child: GestureDetector(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: const Icon(
-                FontAwesomeIcons.arrowLeft,
-                color: Colors.grey,
-              ),
-            ),
-          ),
+          newAlign(context),
+          textAlign('My Firstname is...'),
           Padding(
-            padding: paddingText,
-            child: const Text(
-              'My first name is',
-              style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(top: 10, left: 20, right: 20),
+            padding: EdgeInsets.only(top: 10, left: 30, right: 30),
             child: Container(
               height: 85,
               width: 100.w,
               child: AspectRatio(
                 aspectRatio: 1.5,
                 child: TextField(
+                  controller: _controller,
                   showCursor: false,
                   readOnly: false,
                   style: const TextStyle(
@@ -56,7 +55,7 @@ class _UpdateEmailState extends State<UpdateEmail> {
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: color)),
+                        borderSide: BorderSide(color: color, width: 2.0)),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: color, width: 2.0),
                     ),
@@ -66,6 +65,34 @@ class _UpdateEmailState extends State<UpdateEmail> {
               ),
             ),
           ),
+          Padding(
+            padding:
+                const EdgeInsets.only(top: 5, left: 25, right: 20, bottom: 20),
+            child: Text(
+                'This is how it will appear in marriage and you will not be able to change it'),
+          ),
+          ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                shadowColor: color,
+                onSurface: color,
+                primary: color,
+                maximumSize: const Size.fromHeight(45),
+                fixedSize: const Size.fromWidth(350),
+              ),
+              onPressed: btnButton
+                  ? () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => DatePage()),
+                      );
+                      setState(() => btnButton = false);
+                      _controller.clear();
+                    }
+                  : null,
+              child: Text(
+                'CONTINUE',
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              ))
         ],
       )),
     );
