@@ -1,3 +1,5 @@
+// ignore_for_file: void_checks, unrelated_type_equality_checks, avoid_returning_null_for_void
+
 import 'package:flutter/material.dart';
 import 'package:marriage/exports.dart';
 
@@ -13,6 +15,9 @@ class ChooseGender extends StatefulWidget {
 class _ChooseGenderState extends State<ChooseGender> {
   final activeColorBlack = const Color(0xff313131);
   final inActiveColorBlack = const Color(0xffF0F0F0);
+  final activeTextColor = const Color(0xffFFFFFF);
+  final inActiveTextColor = const Color(0xff313131);
+  // bool btnClicked = false;
   Select? selectedIndex;
   @override
   Widget build(BuildContext context) {
@@ -42,10 +47,14 @@ class _ChooseGenderState extends State<ChooseGender> {
                       border: Border.all(
                         color: activeColorBlack,
                       )),
-                  child: const Center(
+                  child: Center(
                       child: Text(
                     'MAN',
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: selectedIndex == Select.male
+                            ? activeTextColor
+                            : inActiveTextColor),
                   )),
                 ),
               ),
@@ -69,13 +78,41 @@ class _ChooseGenderState extends State<ChooseGender> {
                       border: Border.all(
                         color: activeColorBlack,
                       )),
-                  child: const Center(
+                  child: Center(
                       child: Text(
                     'WOMAN',
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: selectedIndex == Select.female
+                            ? activeTextColor
+                            : inActiveTextColor),
                   )),
                 ),
               ),
+              const SizedBox(
+                height: 50,
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  shadowColor: color,
+                  primary: color,
+                  maximumSize: const Size.fromHeight(45),
+                  fixedSize: const Size.fromWidth(350),
+                ),
+                onPressed: selectedIndex != null
+                    ? () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const ChooseGender()));
+                        setState(() => selectedIndex = true as Select?);
+                      }
+                    : null,
+                child: const Text(
+                  'CONTINUE',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+              )
             ],
           ),
         ],
