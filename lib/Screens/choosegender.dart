@@ -17,7 +17,6 @@ class _ChooseGenderState extends State<ChooseGender> {
   final inActiveColorBlack = const Color(0xffF0F0F0);
   final activeTextColor = const Color(0xffFFFFFF);
   final inActiveTextColor = const Color(0xff313131);
-  // bool btnClicked = false;
   Select? selectedIndex;
   @override
   Widget build(BuildContext context) {
@@ -29,7 +28,12 @@ class _ChooseGenderState extends State<ChooseGender> {
             children: [
               newAlign(context),
               textAlign('I Am a'),
-              const Text('Choose your gender'),
+              const Padding(
+                padding: EdgeInsets.only(left: 30, bottom: 50),
+                child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text('Choose your gender')),
+              ),
               InkWell(
                 onTap: () {
                   setState(() {
@@ -59,7 +63,7 @@ class _ChooseGenderState extends State<ChooseGender> {
                 ),
               ),
               const SizedBox(
-                height: 10,
+                height: 30,
               ),
               InkWell(
                 onTap: () {
@@ -104,8 +108,8 @@ class _ChooseGenderState extends State<ChooseGender> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const ChooseGender()));
-                        setState(() => selectedIndex = true as Select?);
+                                builder: (context) => const SelectTopic()));
+                        // setState(() => selectedIndex = Select as Select?);
                       }
                     : null,
                 child: const Text(

@@ -20,3 +20,9 @@ const colorDivider2 = Colors.white12;
 const aligntext = EdgeInsets.symmetric(horizontal: 10, vertical: 10);
 const paddingText = EdgeInsets.only(left: 25, right: 25, top: 10);
 const paddingSecondText = EdgeInsets.only(top: 5, left: 20, right: 20);
+const innerBox = SizedBox(
+  width: 10,
+);
+const outerBox = SizedBox(
+  height: 10,
+);

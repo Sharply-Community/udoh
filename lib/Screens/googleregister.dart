@@ -57,12 +57,18 @@ class GoogleRegister extends StatelessWidget {
                 SizedBox(
                   height: 20,
                 ),
-                LoginWidget(
-                  background: Colors.white,
-                  colorText: color,
-                  text: 'A',
-                  emailText1: 'Abdurrazzaq Abdulmuhsin',
-                  emailText2: 'abdurrazzaqabdulmuhsin7@gmail.com',
+                InkWell(
+                  onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const HomePage())),
+                  child: LoginWidget(
+                    background: Colors.white,
+                    colorText: color,
+                    text: 'A',
+                    emailText1: 'Abdurrazzaq Abdulmuhsin',
+                    emailText2: 'abdurrazzaqabdulmuhsin7@gmail.com',
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
