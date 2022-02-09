@@ -1,10 +1,12 @@
 // ignore_for_file: sized_box_for_whitespace, prefer_const_constructors
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:marriage/exports.dart';
+import 'package:readmore/readmore.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -14,6 +16,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  bool isReadMore = false;
   final textColor = const Color(0xff6C63FF);
   int _currentIndex = 0;
   @override
@@ -81,90 +84,191 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(label: "Settings", icon: Icon(Icons.settings))
         ],
       ),
-      body: Column(
-        children: [
-          Container(
-            color: Colors.white,
-            width: double.infinity,
-            child: Column(
-              children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CircleAvatar(
-                      radius: 20,
-                      child: Image.asset('assets/unsplash.png'),
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Column(
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          children: [
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+              height: 450,
+              color: Colors.white,
+              width: double.infinity,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8, right: 8, top: 10),
+                    child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Row(
-                          children: [
-                            const Text(
-                              'Loving World',
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              'Folow',
-                              style: TextStyle(
-                                  color: textColor,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
+                        CircleAvatar(
+                          radius: 20,
+                          child: Image.asset('assets/unsplash.png'),
                         ),
                         const SizedBox(
-                          height: 5,
+                          width: 10,
                         ),
-                        Row(
-                          children: const [
-                            Text(
-                              'Posted by Richard Joseph Strachan',
-                              style: TextStyle(
-                                  color: Colors.black45,
-                                  fontWeight: FontWeight.bold),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                const Text(
+                                  'Loving World',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                Text(
+                                  'Folow',
+                                  style: TextStyle(
+                                      color: textColor,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
                             ),
-                            SizedBox(
-                              width: 15,
+                            const SizedBox(
+                              height: 5,
                             ),
-                            Text(
-                              'Jan 3',
-                              style: TextStyle(
-                                  color: Colors.black45,
-                                  fontWeight: FontWeight.bold),
-                            )
+                            Row(
+                              children: const [
+                                Text(
+                                  'Posted by Richard Joseph Strachan',
+                                  style: TextStyle(
+                                      color: Colors.black45,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(
+                                  width: 15,
+                                ),
+                                Text(
+                                  'Jan 3',
+                                  style: TextStyle(
+                                      color: Colors.black45,
+                                      fontWeight: FontWeight.bold),
+                                )
+                              ],
+                            ),
                           ],
                         ),
+                        const Icon(Icons.cancel)
                       ],
                     ),
-                    const Icon(Icons.cancel)
-                  ],
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: Text(
-                      'Bob Marley was once asked if there was a perfect woman. And he replied Who cares about perfection? Even the moon is not perfecr, it is full of craters, What about the sea? Very, Read More.'),
-                ),
-                Image(
-                  image: AssetImage(
-                    'assets/unsplash1.png',
                   ),
-                  width: double.infinity,
-                ),
-              ],
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Text(
+                        'Bob Marley was once asked if there was a perfect woman. And he replied Who cares about perfection? Even the moon is not perfecr, it is full of craters, What about the sea? Very, Read More.'),
+                  ),
+                  Row(
+                    children: const [
+                      Expanded(
+                        child: Image(
+                          image: AssetImage(
+                            'assets/unsplash1.png',
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: Image(
+                          image: AssetImage(
+                            'assets/unsplash2.png',
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: Container(
+                          height: 30,
+                          width: 155,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: const Color(0xffE5E5E5),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: const [
+                              Padding(
+                                padding: EdgeInsets.only(left: 5),
+                                child: Icon(Icons.thumb_up_alt_sharp),
+                              ),
+                              SizedBox(
+                                width: 12,
+                              ),
+                              Text(
+                                '2.3K',
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              VerticalDivider(
+                                indent: 5,
+                                endIndent: 5,
+                                thickness: 2,
+                                color: Colors.black,
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Icon(Icons.thumb_down_alt),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text('70',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold))
+                            ],
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 25,
+                      ),
+                      Icon(Icons.autorenew),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Text('7',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold)),
+                      SizedBox(
+                        width: 15,
+                      ),
+                      Icon(Icons.maps_ugc_outlined),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Text('21',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold)),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 80),
+                        child: Icon(Icons.share),
+                      )
+                    ],
+                  )
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
