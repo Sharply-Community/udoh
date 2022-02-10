@@ -21,6 +21,8 @@ dependencies:
   otp_text_field: ^1.1.1
   chips_choice_null_safety: ^2.0.4
   expandable_text: ^2.2.0
+  bloc: ^8.0.2
+  flutter_bloc: ^8.0.1
 
 dev_dependencies:
   flutter_test:

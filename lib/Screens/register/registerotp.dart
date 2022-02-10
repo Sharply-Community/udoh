@@ -3,8 +3,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:marriage/exports.dart';
-import 'package:otp_text_field/otp_text_field.dart';
-import 'package:otp_text_field/style.dart';
 
 class RegisterOtp extends StatefulWidget {
   const RegisterOtp({Key? key}) : super(key: key);
@@ -66,9 +64,9 @@ class _RegisterOtpState extends State<RegisterOtp> {
               padding: const EdgeInsets.only(left: 20, right: 20),
               child: Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10, right: 10),
-                    child: _textFiledOTP(),
+                  const Padding(
+                    padding: EdgeInsets.only(left: 10, right: 10),
+                    child: OtpTextFiled(),
                   ),
                   const SizedBox(
                     height: 20,
@@ -98,35 +96,6 @@ class _RegisterOtpState extends State<RegisterOtp> {
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  Widget _textFiledOTP() {
-    return Container(
-      width: double.infinity,
-      child: OTPTextField(
-        length: 6,
-        width: 50,
-        keyboardType: TextInputType.number,
-        // fieldWidth: 30,
-        otpFieldStyle: OtpFieldStyle(
-          backgroundColor: Colors.white,
-          borderColor: color,
-        ),
-        style: const TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 20,
-          color: Colors.black,
-        ),
-        textFieldAlignment: MainAxisAlignment.spaceBetween,
-        fieldStyle: FieldStyle.underline,
-        onChanged: (pin) {
-          print("Successful:" + pin);
-        },
-        onCompleted: (value) {
-          print("Successful:" + value);
-        },
       ),
     );
   }

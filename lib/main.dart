@@ -3,6 +3,7 @@ import 'package:marriage/exports.dart';
 import 'package:sizer/sizer.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MarriageApp());
 }
 
@@ -25,7 +26,6 @@ class MarriageApp extends StatelessWidget {
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
-
 
   @override
   Widget build(BuildContext context) {
@@ -53,9 +53,7 @@ class PageControllerPage extends StatelessWidget {
       children: const <Widget>[
         HomeScreen(),
         IntroSliderPage(),
-
       ],
     );
   }
 }
-

@@ -39,10 +39,11 @@ class _PhoneLoginScreenState extends State<PhoneLoginScreen> {
         child: Column(
           children: [
             newAlign(context),
-            textAlign('My Birthday is...'),
+            textAlign('My Number is...'),
             Container(
               padding: const EdgeInsets.only(left: 20, right: 20),
               child: TextFormField(
+                maxLength: 11,
                 controller: controller,
                 inputFormatters: <TextInputFormatter>[
                   FilteringTextInputFormatter.allow(RegExp(r'[0-9]'))

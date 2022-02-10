@@ -87,16 +87,7 @@ class _OtpScreenState extends State<OtpScreen> {
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(12)),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      _TextFiledOTP(first: true, last: false),
-                      _TextFiledOTP(first: true, last: false),
-                      _TextFiledOTP(first: true, last: false),
-                      _TextFiledOTP(first: true, last: false),
-                      _TextFiledOTP(first: true, last: true)
-                    ],
-                  ),
+                  child: const OtpTextFiled(),
                 ),
                 const SizedBox(
                   height: 20,
@@ -113,6 +104,10 @@ class _OtpScreenState extends State<OtpScreen> {
                         ? () {
                             setState(() => isButtonActive2 = false);
                             controller.clear();
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const HomePage()));
                           }
                         : null,
                     child: const Text(
@@ -124,44 +119,6 @@ class _OtpScreenState extends State<OtpScreen> {
           ),
         ],
       )),
-    );
-  }
-
-  _TextFiledOTP({bool? first, last}) {
-    return Container(
-      height: 85,
-      child: AspectRatio(
-        aspectRatio: 0.7,
-        child: TextField(
-          controller: controller,
-          autofocus: true,
-          onChanged: (value) {
-            if (value.length == 1 && last == false) {
-              FocusScope.of(context).nextFocus();
-            } else if (value.length == 1 && first == false) {
-              FocusScope.of(context).previousFocus();
-            }
-          },
-          showCursor: false,
-          readOnly: false,
-          textAlign: TextAlign.center,
-          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
-          keyboardType: TextInputType.number,
-          maxLength: 1,
-          decoration: InputDecoration(
-              counter: const Offstage(),
-              enabledBorder: OutlineInputBorder(
-                  borderSide: const BorderSide(width: 2, color: Colors.black12),
-                  borderRadius: BorderRadius.circular(12)),
-              focusedBorder: OutlineInputBorder(
-                borderSide: const BorderSide(
-                  width: 2,
-                  color: Colors.black12,
-                ),
-                borderRadius: BorderRadius.circular(12),
-              )),
-        ),
-      ),
     );
   }
 }

@@ -162,8 +162,8 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   Padding(
-                    padding:
-                        const EdgeInsets.only(top: 10, left: 10, right: 10),
+                    padding: const EdgeInsets.only(
+                        top: 10, left: 10, right: 10, bottom: 5),
                     child: ExpandableText(
                       'Bob Marley was once asked if there was a perfect woman. And he replied Who cares about perfection? Even the moon is not perfecr, it is full of craters, What about the sea? Very,',
                       expandText: '..showMore',
@@ -175,6 +175,7 @@ class _HomePageState extends State<HomePage> {
                     children: const [
                       Expanded(
                         child: Image(
+                          fit: BoxFit.fill,
                           image: AssetImage(
                             'assets/unsplash1.png',
                           ),
@@ -182,6 +183,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       Expanded(
                         child: Image(
+                          fit: BoxFit.fill,
                           image: AssetImage(
                             'assets/unsplash2.png',
                           ),
@@ -189,104 +191,107 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ],
                   ),
-                  Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10),
-                        child: Container(
-                          height: 30,
-                          width: 155,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: const Color(0xffE5E5E5),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.only(left: 5),
-                                child: InkWell(
-                                    onTap: () => setState(() {
-                                          likePost = likedPost.like;
-                                        }),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 15),
+                    child: Row(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10),
+                          child: Container(
+                            height: 30,
+                            width: 155,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: const Color(0xffE5E5E5),
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.only(left: 5),
+                                  child: InkWell(
+                                      onTap: () => setState(() {
+                                            likePost = likedPost.like;
+                                          }),
+                                      child: Icon(
+                                        Icons.thumb_up_alt_sharp,
+                                        color: likePost == likedPost.like
+                                            ? Colors.blue
+                                            : Colors.black,
+                                      )),
+                                ),
+                                SizedBox(
+                                  width: 12,
+                                ),
+                                Text(
+                                  '2.3K',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                VerticalDivider(
+                                  indent: 5,
+                                  endIndent: 5,
+                                  thickness: 2,
+                                  color: Colors.black,
+                                ),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                InkWell(
+                                    onTap: () => setState(
+                                          () {
+                                            likePost = likedPost.unlike;
+                                          },
+                                        ),
                                     child: Icon(
-                                      Icons.thumb_up_alt_sharp,
-                                      color: likePost == likedPost.like
+                                      Icons.thumb_down_alt,
+                                      color: likePost == likedPost.unlike
                                           ? Colors.blue
                                           : Colors.black,
                                     )),
-                              ),
-                              SizedBox(
-                                width: 12,
-                              ),
-                              Text(
-                                '2.3K',
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              VerticalDivider(
-                                indent: 5,
-                                endIndent: 5,
-                                thickness: 2,
-                                color: Colors.black,
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              InkWell(
-                                  onTap: () => setState(
-                                        () {
-                                          likePost = likedPost.unlike;
-                                        },
-                                      ),
-                                  child: Icon(
-                                    Icons.thumb_down_alt,
-                                    color: likePost == likedPost.unlike
-                                        ? Colors.blue
-                                        : Colors.black,
-                                  )),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Text('70',
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold))
-                            ],
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Text('70',
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold))
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                      SizedBox(
-                        width: 25,
-                      ),
-                      Icon(Icons.autorenew),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      Text('7',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold)),
-                      SizedBox(
-                        width: 15,
-                      ),
-                      Icon(Icons.maps_ugc_outlined),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      Text('21',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold)),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 80),
-                        child: Icon(Icons.share),
-                      )
-                    ],
+                        SizedBox(
+                          width: 25,
+                        ),
+                        Icon(Icons.autorenew),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Text('7',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold)),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        Icon(Icons.maps_ugc_outlined),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        Text('21',
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold)),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 80),
+                          child: Icon(Icons.share),
+                        )
+                      ],
+                    ),
                   )
                 ],
               ),
