@@ -20,6 +20,7 @@ dependencies:
   country_code_picker: ^2.0.2
   otp_text_field: ^1.1.1
   chips_choice_null_safety: ^2.0.4
+  expandable_text: ^2.2.0
 
 dev_dependencies:
   flutter_test:

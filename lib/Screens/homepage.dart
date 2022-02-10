@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:expandable_text/expandable_text.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:marriage/exports.dart';
-import 'package:readmore/readmore.dart';
+
+enum likedPost { like, unlike }
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -16,7 +18,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  bool isReadMore = false;
+  likedPost? likePost;
   final textColor = const Color(0xff6C63FF);
   int _currentIndex = 0;
   @override
@@ -159,13 +161,15 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                   ),
-                  const SizedBox(
-                    height: 20,
-                  ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: Text(
-                        'Bob Marley was once asked if there was a perfect woman. And he replied Who cares about perfection? Even the moon is not perfecr, it is full of craters, What about the sea? Very, Read More.'),
+                    padding:
+                        const EdgeInsets.only(top: 10, left: 10, right: 10),
+                    child: ExpandableText(
+                      'Bob Marley was once asked if there was a perfect woman. And he replied Who cares about perfection? Even the moon is not perfecr, it is full of craters, What about the sea? Very,',
+                      expandText: '..showMore',
+                      collapseText: 'ShowLess',
+                      linkColor: Color(0xff313131),
+                    ),
                   ),
                   Row(
                     children: const [
@@ -198,10 +202,19 @@ class _HomePageState extends State<HomePage> {
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
+                            children: [
                               Padding(
                                 padding: EdgeInsets.only(left: 5),
-                                child: Icon(Icons.thumb_up_alt_sharp),
+                                child: InkWell(
+                                    onTap: () => setState(() {
+                                          likePost = likedPost.like;
+                                        }),
+                                    child: Icon(
+                                      Icons.thumb_up_alt_sharp,
+                                      color: likePost == likedPost.like
+                                          ? Colors.blue
+                                          : Colors.black,
+                                    )),
                               ),
                               SizedBox(
                                 width: 12,
@@ -224,7 +237,18 @@ class _HomePageState extends State<HomePage> {
                               SizedBox(
                                 width: 5,
                               ),
-                              Icon(Icons.thumb_down_alt),
+                              InkWell(
+                                  onTap: () => setState(
+                                        () {
+                                          likePost = likedPost.unlike;
+                                        },
+                                      ),
+                                  child: Icon(
+                                    Icons.thumb_down_alt,
+                                    color: likePost == likedPost.unlike
+                                        ? Colors.blue
+                                        : Colors.black,
+                                  )),
                               SizedBox(
                                 width: 10,
                               ),
