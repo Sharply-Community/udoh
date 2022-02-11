@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:marriage/exports.dart';
 import 'package:flutter/services.dart';
@@ -61,7 +59,7 @@ class _PhoneRegisterState extends State<PhoneRegister> {
                       borderSide: const BorderSide(color: color, width: 5.0),
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    prefix: Padding(
+                    prefix: const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 8),
                       child: Text(
                         '+234',
@@ -71,10 +69,10 @@ class _PhoneRegisterState extends State<PhoneRegister> {
                     )),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(left: 30, right: 30, top: 5, bottom: 20),
               child: Text(
                   'When you tap continue, marriage will send you a text with verification code.'
@@ -94,15 +92,15 @@ class _PhoneRegisterState extends State<PhoneRegister> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => RegisterOtp()),
+                              builder: (context) => const RegisterOtp()),
                         );
                         setState(() => isButtonActive3 = false);
                         controller.clear();
                       }
                     : null,
-                child: Text(
+                child: const Text(
                   'Continue',
-                  style: const TextStyle(fontWeight: FontWeight.bold),
+                  style: TextStyle(fontWeight: FontWeight.bold),
                 ))
           ],
         ),

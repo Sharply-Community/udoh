@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, sized_box_for_whitespace
-
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'package:marriage/exports.dart';
@@ -40,8 +38,8 @@ class _UpdateEmailState extends State<UpdateEmail> {
           newAlign(context),
           textAlign('My Firstname is...'),
           Padding(
-            padding: EdgeInsets.only(top: 10, left: 30, right: 30),
-            child: Container(
+            padding: const EdgeInsets.only(top: 10, left: 30, right: 30),
+            child: SizedBox(
               height: 85,
               width: 100.w,
               child: AspectRatio(
@@ -53,7 +51,7 @@ class _UpdateEmailState extends State<UpdateEmail> {
                   style: const TextStyle(
                       fontWeight: FontWeight.bold, fontSize: 24),
                   keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     focusedBorder: UnderlineInputBorder(
                         borderSide: BorderSide(color: color, width: 2.0)),
                     enabledBorder: OutlineInputBorder(
@@ -65,9 +63,8 @@ class _UpdateEmailState extends State<UpdateEmail> {
               ),
             ),
           ),
-          Padding(
-            padding:
-                const EdgeInsets.only(top: 5, left: 25, right: 20, bottom: 20),
+          const Padding(
+            padding: EdgeInsets.only(top: 5, left: 25, right: 20, bottom: 20),
             child: Text(
                 'This is how it will appear in marriage and you will not be able to change it'),
           ),
@@ -83,15 +80,16 @@ class _UpdateEmailState extends State<UpdateEmail> {
                   ? () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => DatePage()),
+                        MaterialPageRoute(
+                            builder: (context) => const DatePage()),
                       );
                       setState(() => btnButton = false);
                       _controller.clear();
                     }
                   : null,
-              child: Text(
+              child: const Text(
                 'CONTINUE',
-                style: const TextStyle(fontWeight: FontWeight.bold),
+                style: TextStyle(fontWeight: FontWeight.bold),
               ))
         ],
       )),

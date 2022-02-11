@@ -1,5 +1,3 @@
-// ignore_for_file: non_constant_identifier_names, sized_box_for_whitespace
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:marriage/exports.dart';

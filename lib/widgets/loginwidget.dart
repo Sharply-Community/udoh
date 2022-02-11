@@ -36,7 +36,6 @@ class LoginWidget extends StatelessWidget {
             width: 15,
           ),
           Column(
-            // mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(

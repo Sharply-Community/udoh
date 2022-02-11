@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:marriage/exports.dart';
@@ -72,7 +70,7 @@ class RegisterScree extends StatelessWidget {
                             MaterialPageRoute(
                                 builder: (context) => const GoogleRegister()));
                       },
-                      child: containerWidget(
+                      child: const ContainerWidget(
                         heightSize: 45,
                         iconColors: iconColorWhite,
                         icon: FontAwesomeIcons.google,
@@ -87,9 +85,9 @@ class RegisterScree extends StatelessWidget {
                     //
                   ),
                   sizedBox,
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.only(right: 15, left: 15),
-                    child: containerWidgetBlue(
+                    child: ContainerWidgetBlue(
                       icon: FontAwesomeIcons.facebook,
                       textStyle: TextStyle(
                           color: Colors.white,
@@ -105,11 +103,11 @@ class RegisterScree extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => PhoneRegister()));
+                              builder: (context) => const PhoneRegister()));
                     },
                     child: const Padding(
                       padding: EdgeInsets.only(right: 15, left: 15),
-                      child: containerWidget(
+                      child: ContainerWidget(
                         heightSize: 45,
                         iconColors: iconColorWhite,
                         icon: FontAwesomeIcons.phoneAlt,

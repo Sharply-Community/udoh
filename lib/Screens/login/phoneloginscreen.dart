@@ -1,4 +1,3 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -62,7 +61,7 @@ class _PhoneLoginScreenState extends State<PhoneLoginScreen> {
                       borderSide: const BorderSide(color: color, width: 5.0),
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    prefix: Padding(
+                    prefix: const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 8),
                       child: Text(
                         '+234',
@@ -72,17 +71,17 @@ class _PhoneLoginScreenState extends State<PhoneLoginScreen> {
                     )),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(left: 30, right: 30, top: 5),
               child: Text(
                   'When you tap continue, marriage will send you a text with verification code.'
                   ' Message and data rates may apply. The verified phone number can be used to login.'
                   'Learn what happens when your number changes.'),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             ElevatedButton(
@@ -98,14 +97,14 @@ class _PhoneLoginScreenState extends State<PhoneLoginScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => OtpScreen()));
+                                builder: (context) => const OtpScreen()));
                         setState(() => isButtonActive = false);
                         controller.clear();
                       }
                     : null,
-                child: Text(
+                child: const Text(
                   'Continue',
-                  style: const TextStyle(fontWeight: FontWeight.bold),
+                  style: TextStyle(fontWeight: FontWeight.bold),
                 ))
           ],
         ),

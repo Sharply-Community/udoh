@@ -1,4 +1,4 @@
-// ignore_for_file: camel_case_types, recursive_getters, prefer_typing_uninitialized_variables
+// ignore_for_file: prefer_typing_uninitialized_variables
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +7,7 @@ import 'package:marriage/exports.dart';
 import 'package:otp_text_field/otp_text_field.dart';
 import 'package:otp_text_field/style.dart';
 
-class containerWidget extends StatelessWidget {
+class ContainerWidget extends StatelessWidget {
   final TextStyle textStyle;
   final double heightSize;
   final Border? border;
@@ -15,7 +15,7 @@ class containerWidget extends StatelessWidget {
   final IconData? icon;
   final iconColors;
   final Color? colors;
-  const containerWidget({
+  const ContainerWidget({
     required this.heightSize,
     this.iconColors,
     this.border,
@@ -61,12 +61,12 @@ class containerWidget extends StatelessWidget {
   }
 }
 
-class containerWidgetBlue extends StatelessWidget {
+class ContainerWidgetBlue extends StatelessWidget {
   final TextStyle textStyle;
   final String text;
   final IconData? icon;
   final Color colors;
-  const containerWidgetBlue(
+  const ContainerWidgetBlue(
       {required this.textStyle,
       required this.colors,
       required this.text,
@@ -212,13 +212,12 @@ class OtpTextFiled extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: double.infinity,
       child: OTPTextField(
         length: 6,
         width: 50,
         keyboardType: TextInputType.number,
-        // fieldWidth: 30,
         otpFieldStyle: OtpFieldStyle(
           backgroundColor: Colors.white,
           borderColor: color,

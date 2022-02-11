@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:marriage/exports.dart';
@@ -48,13 +46,13 @@ class GoogleRegister extends StatelessWidget {
                     ],
                   ),
                 ),
-                Text(
+                const Text(
                   'to continue to Tinder',
                   style: TextStyle(
                     color: Colors.white,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 InkWell(
@@ -62,7 +60,7 @@ class GoogleRegister extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                           builder: (context) => const HomePage())),
-                  child: LoginWidget(
+                  child: const LoginWidget(
                     background: Colors.white,
                     colorText: color,
                     text: 'A',
@@ -70,87 +68,87 @@ class GoogleRegister extends StatelessWidget {
                     emailText2: 'abdurrazzaqabdulmuhsin7@gmail.com',
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
                   child: Divider(
                     color: Colors.white,
                     height: 25,
                     thickness: 2.0,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
-                LoginWidget(
+                const LoginWidget(
                   background: Color(0xff6C63FF),
                   colorText: Colors.white,
                   text: 'F',
                   emailText1: 'Franklin Okolie',
                   emailText2: 'Franklinokolie10@gmail.com',
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
                   child: Divider(
                     color: Colors.white54,
                     height: 25,
                     thickness: 2.0,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
-                LoginWidget(
+                const LoginWidget(
                   background: Colors.white,
                   colorText: color,
                   text: 'A',
                   emailText1: 'Abdurrazzaq Abdulmuhsin',
                   emailText2: 'abdurrazzaqabdulmuhsin7@gmail.com',
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
                   child: Divider(
                     color: Colors.white,
                     height: 25,
                     thickness: 2.0,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
-                LoginWidget(
+                const LoginWidget(
                   background: Color(0xff6C63FF),
                   colorText: Colors.white,
                   text: 'F',
                   emailText1: 'Franklin Okolie',
                   emailText2: 'Franklinokolie10@gmail.com',
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
                   child: Divider(
                     color: Colors.white54,
                     height: 25,
                     thickness: 2.0,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
-                LoginWidget(
+                const LoginWidget(
                   background: Colors.white,
                   colorText: color,
                   text: 'O',
                   emailText1: 'Oladayor Habeeb',
                   emailText2: 'Franklinokolie10@gmail.com',
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
                   child: Divider(
                     color: Colors.white54,
                     height: 25,
                     thickness: 2.0,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Padding(
@@ -158,12 +156,12 @@ class GoogleRegister extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Icon(
+                      const Icon(
                         FontAwesomeIcons.userCircle,
                         color: Colors.white,
                         size: 25,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 20,
                       ),
                       Column(
@@ -180,8 +178,8 @@ class GoogleRegister extends StatelessWidget {
                     ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
                   child: Divider(
                     color: Colors.white,
                     height: 25,

@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:marriage/exports.dart';
@@ -22,8 +20,8 @@ class GoogleLogin extends StatelessWidget {
             width: double.infinity,
             child: Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(
+                const Padding(
+                  padding: EdgeInsets.only(
                     top: 10,
                   ),
                   child: Text(
@@ -37,7 +35,7 @@ class GoogleLogin extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Column(
-                    children: [
+                    children: const [
                       Text(
                         'Choose an account',
                         style: TextStyle(
@@ -48,103 +46,103 @@ class GoogleLogin extends StatelessWidget {
                     ],
                   ),
                 ),
-                Text(
+                const Text(
                   'to continue to Tinder',
                   style: TextStyle(
                     color: Colors.white,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                LoginWidget(
+                const LoginWidget(
                   background: Colors.white,
                   colorText: color,
                   text: 'A',
                   emailText1: 'Abdurrazzaq Abdulmuhsin',
                   emailText2: 'abdurrazzaqabdulmuhsin7@gmail.com',
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
                   child: Divider(
                     color: Colors.white,
                     height: 25,
                     thickness: 2.0,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
-                LoginWidget(
+                const LoginWidget(
                   background: Color(0xff6C63FF),
                   colorText: Colors.white,
                   text: 'F',
                   emailText1: 'Franklin Okolie',
                   emailText2: 'Franklinokolie10@gmail.com',
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
                   child: Divider(
                     color: Colors.white54,
                     height: 25,
                     thickness: 2.0,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
-                LoginWidget(
+                const LoginWidget(
                   background: Colors.white,
                   colorText: color,
                   text: 'A',
                   emailText1: 'Abdurrazzaq Abdulmuhsin',
                   emailText2: 'abdurrazzaqabdulmuhsin7@gmail.com',
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
                   child: Divider(
                     color: Colors.white,
                     height: 25,
                     thickness: 2.0,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
-                LoginWidget(
+                const LoginWidget(
                   background: Color(0xff6C63FF),
                   colorText: Colors.white,
                   text: 'F',
                   emailText1: 'Franklin Okolie',
                   emailText2: 'Franklinokolie10@gmail.com',
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
                   child: Divider(
                     color: Colors.white54,
                     height: 25,
                     thickness: 2.0,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
-                LoginWidget(
+                const LoginWidget(
                   background: Colors.white,
                   colorText: color,
                   text: 'O',
                   emailText1: 'Oladayor Habeeb',
                   emailText2: 'Franklinokolie10@gmail.com',
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
                   child: Divider(
                     color: Colors.white54,
                     height: 25,
                     thickness: 2.0,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Padding(
@@ -152,17 +150,17 @@ class GoogleLogin extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Icon(
+                      const Icon(
                         FontAwesomeIcons.userCircle,
                         color: Colors.white,
                         size: 25,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 20,
                       ),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
+                        children: const [
                           Text(
                             'Add another account',
                             style: TextStyle(
@@ -174,8 +172,8 @@ class GoogleLogin extends StatelessWidget {
                     ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
                   child: Divider(
                     color: Colors.white,
                     height: 25,
@@ -186,7 +184,7 @@ class GoogleLogin extends StatelessWidget {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                   child: Column(
-                    children: [
+                    children: const [
                       Text(
                         "To continue, Google will share your name, email address, and profile picture wit Marriag. Before using this app,",
                         style: TextStyle(color: Colors.white),

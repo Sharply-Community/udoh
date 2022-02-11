@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:marriage/exports.dart';
@@ -40,7 +38,7 @@ class _EnterEmailState extends State<EnterEmail> {
           children: [
             newAlign(context),
             textAlign('What\'s your email?'),
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(left: 30),
               child: Text(
                   'Dont\'t lose access to your account, verify your email',
@@ -57,12 +55,12 @@ class _EnterEmailState extends State<EnterEmail> {
                     const TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide: const BorderSide(color: color, width: 3.0),
+                  focusedBorder: const UnderlineInputBorder(
+                    borderSide: BorderSide(color: color, width: 3.0),
                   ),
                   hintText: "Email email",
                   enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: color, width: 3.5),
+                      borderSide: const BorderSide(color: color, width: 3.5),
                       borderRadius: BorderRadius.circular(10)),
                 ),
               ),
@@ -82,27 +80,27 @@ class _EnterEmailState extends State<EnterEmail> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => UpdateEmail()),
+                              builder: (context) => const UpdateEmail()),
                         );
                         setState(() => btnEnable = false);
                         _controller.clear();
                       }
                     : null,
-                child: Text(
+                child: const Text(
                   'CONTINUE',
-                  style: const TextStyle(fontWeight: FontWeight.bold),
+                  style: TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            Text(
+            const Text(
               'OR',
               style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 20, left: 20, right: 20),
+              padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
               child: InkWell(
                 onTap: () {
                   Navigator.push(
@@ -110,9 +108,9 @@ class _EnterEmailState extends State<EnterEmail> {
                       MaterialPageRoute(
                           builder: (context) => const GoogleRegister()));
                 },
-                child: containerWidget(
+                child: ContainerWidget(
                     heightSize: 60,
-                    textStyle: TextStyle(
+                    textStyle: const TextStyle(
                         color: Colors.black54, fontWeight: FontWeight.bold),
                     border: Border.all(
                         color: color, width: 1.0, style: BorderStyle.solid),
@@ -121,10 +119,10 @@ class _EnterEmailState extends State<EnterEmail> {
                     text: 'REGISTER WITH GOOGLE'),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            Text(
+            const Text(
               'Verify instantly by connecting your google account',
               style: TextStyle(color: Colors.black54),
             )

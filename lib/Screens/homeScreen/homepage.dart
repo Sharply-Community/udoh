@@ -1,4 +1,3 @@
-// ignore_for_file: sized_box_for_whitespace, prefer_const_constructors
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -90,7 +89,7 @@ class _HomePageState extends State<HomePage> {
         scrollDirection: Axis.vertical,
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Container(
@@ -161,8 +160,8 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(
+                  const Padding(
+                    padding: EdgeInsets.only(
                         top: 10, left: 10, right: 10, bottom: 5),
                     child: ExpandableText(
                       'Bob Marley was once asked if there was a perfect woman. And he replied Who cares about perfection? Even the moon is not perfecr, it is full of craters, What about the sea? Very,',
@@ -208,7 +207,7 @@ class _HomePageState extends State<HomePage> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Padding(
-                                  padding: EdgeInsets.only(left: 5),
+                                  padding: const EdgeInsets.only(left: 5),
                                   child: InkWell(
                                       onTap: () => setState(() {
                                             likePost = likedPost.like;
@@ -220,25 +219,25 @@ class _HomePageState extends State<HomePage> {
                                             : Colors.black,
                                       )),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 12,
                                 ),
-                                Text(
+                                const Text(
                                   '2.3K',
                                   style: TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 5,
                                 ),
-                                VerticalDivider(
+                                const VerticalDivider(
                                   indent: 5,
                                   endIndent: 5,
                                   thickness: 2,
                                   color: Colors.black,
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 5,
                                 ),
                                 InkWell(
@@ -253,10 +252,10 @@ class _HomePageState extends State<HomePage> {
                                           ? Colors.blue
                                           : Colors.black,
                                     )),
-                                SizedBox(
+                                const SizedBox(
                                   width: 10,
                                 ),
-                                Text('70',
+                                const Text('70',
                                     style: TextStyle(
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold))
@@ -264,30 +263,30 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 25,
                         ),
-                        Icon(Icons.autorenew),
-                        SizedBox(
+                        const Icon(Icons.autorenew),
+                        const SizedBox(
                           width: 5,
                         ),
-                        Text('7',
+                        const Text('7',
                             style: TextStyle(
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold)),
-                        SizedBox(
+                        const SizedBox(
                           width: 15,
                         ),
-                        Icon(Icons.maps_ugc_outlined),
-                        SizedBox(
+                        const Icon(Icons.maps_ugc_outlined),
+                        const SizedBox(
                           width: 5,
                         ),
-                        Text('21',
+                        const Text('21',
                             style: TextStyle(
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold)),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 80),
+                        const Padding(
+                          padding: EdgeInsets.only(left: 80),
                           child: Icon(Icons.share),
                         )
                       ],

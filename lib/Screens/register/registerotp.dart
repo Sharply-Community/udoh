@@ -1,5 +1,3 @@
-// ignore_for_file: sized_box_for_whitespace, avoid_print
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:marriage/exports.dart';

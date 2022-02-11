@@ -1,5 +1,3 @@
-// ignore_for_file: avoid_unnecessary_containers, prefer_is_empty
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:marriage/exports.dart';
@@ -52,40 +50,38 @@ class _SelectTopicState extends State<SelectTopic> {
                 child: Text(
                     'By adding it your profile, you can let everyone know what you\'re enthusiastic about')),
           ),
-          Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ChipsChoice<String>.multiple(
-                  value: tags,
-                  onChanged: (val) {
-                    setState(() {
-                      tags = val;
-                      if (tags.length == 3) {
-                        btnColor = color;
-                      } else {
-                        btnColor;
-                      }
-                    });
-                  },
-                  choiceItems: C2Choice.listFrom<String, String>(
-                    source: interest,
-                    value: (i, v) => v,
-                    label: (i, v) => v,
-                  ),
-                  wrapped: true,
-                  choiceStyle: const C2ChoiceStyle(
-                    showCheckmark: false,
-                    color: color,
-                    brightness: Brightness.dark,
-                    borderRadius: BorderRadius.all(
-                      Radius.circular((10)),
-                    ),
-                  ),
-                  choiceActiveStyle: const C2ChoiceStyle(color: color),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ChipsChoice<String>.multiple(
+                value: tags,
+                onChanged: (val) {
+                  setState(() {
+                    tags = val;
+                    if (tags.length == 3) {
+                      btnColor = color;
+                    } else {
+                      btnColor;
+                    }
+                  });
+                },
+                choiceItems: C2Choice.listFrom<String, String>(
+                  source: interest,
+                  value: (i, v) => v,
+                  label: (i, v) => v,
                 ),
-              ],
-            ),
+                wrapped: true,
+                choiceStyle: const C2ChoiceStyle(
+                  showCheckmark: false,
+                  color: color,
+                  brightness: Brightness.dark,
+                  borderRadius: BorderRadius.all(
+                    Radius.circular((10)),
+                  ),
+                ),
+                choiceActiveStyle: const C2ChoiceStyle(color: color),
+              ),
+            ],
           ),
           const SizedBox(
             height: 50,
@@ -114,7 +110,7 @@ class _SelectTopicState extends State<SelectTopic> {
                     width: 5,
                   ),
                   Text(
-                    tags.length <= 0
+                    tags.isEmpty
                         ? "0"
                         : tags.length > 3
                             ? "3/3"

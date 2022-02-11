@@ -1,5 +1,3 @@
-// ignore_for_file: void_checks, unrelated_type_equality_checks, avoid_returning_null_for_void
-
 import 'package:flutter/material.dart';
 import 'package:marriage/exports.dart';
 
@@ -109,7 +107,6 @@ class _ChooseGenderState extends State<ChooseGender> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) => const SelectTopic()));
-                        // setState(() => selectedIndex = Select as Select?);
                       }
                     : null,
                 child: const Text(
