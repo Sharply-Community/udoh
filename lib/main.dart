@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marriage/exports.dart';
+import 'package:marriage/logic/cubit/container_cubit.dart';
 import 'package:sizer/sizer.dart';
 
 void main() {
@@ -50,9 +52,12 @@ class PageControllerPage extends StatelessWidget {
     final PageController controller = PageController();
     return PageView(
       controller: controller,
-      children: const <Widget>[
-        HomeScreen(),
-        IntroSliderPage(),
+      children: <Widget>[
+        const HomeScreen(),
+        BlocProvider(
+          create: (context) => ContainerCubit(),
+          child: const IntroSliderPage(),
+        ),
       ],
     );
   }

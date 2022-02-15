@@ -2,7 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marriage/exports.dart';
+import 'package:marriage/logic/cubit/container_cubit.dart';
+import 'package:marriage/logic/cubit/controller_cubit.dart';
 
 class PhoneLoginScreen extends StatefulWidget {
   const PhoneLoginScreen({Key? key}) : super(key: key);
@@ -12,25 +15,6 @@ class PhoneLoginScreen extends StatefulWidget {
 }
 
 class _PhoneLoginScreenState extends State<PhoneLoginScreen> {
-  late TextEditingController controller;
-  bool isButtonActive = true;
-
-  @override
-  void initState() {
-    controller = TextEditingController();
-    controller.addListener(() {
-      final isButtonActive = controller.text.isNotEmpty;
-      setState(() => this.isButtonActive = isButtonActive);
-    });
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +27,11 @@ class _PhoneLoginScreenState extends State<PhoneLoginScreen> {
               padding: const EdgeInsets.only(left: 20, right: 20),
               child: TextFormField(
                 maxLength: 11,
-                controller: controller,
+                onChanged: (controller) {
+                  final changeColorCubit =
+                      BlocProvider.of<ControllerCubit>(context);
+                  changeColorCubit.updateColor(controller);
+                },
                 inputFormatters: <TextInputFormatter>[
                   FilteringTextInputFormatter.allow(RegExp(r'[0-9]'))
                 ],
@@ -84,28 +72,33 @@ class _PhoneLoginScreenState extends State<PhoneLoginScreen> {
             const SizedBox(
               height: 20,
             ),
-            ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  shadowColor: color,
-                  onSurface: color,
-                  primary: color,
-                  maximumSize: const Size.fromHeight(45),
-                  fixedSize: const Size.fromWidth(350),
-                ),
-                onPressed: isButtonActive
-                    ? () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const OtpScreen()));
-                        setState(() => isButtonActive = false);
-                        controller.clear();
-                      }
-                    : null,
-                child: const Text(
-                  'Continue',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ))
+            BlocBuilder<ControllerCubit, ControllerState>(
+              builder: (context, state) {
+                return ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      shadowColor: color,
+                      onSurface: color,
+                      primary: color,
+                      maximumSize: const Size.fromHeight(45),
+                      fixedSize: const Size.fromWidth(350),
+                    ),
+                    onPressed: state.controllerColor
+                        ? () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => BlocProvider(
+                                          create: (context) => ContainerCubit(),
+                                          child: const OtpScreen(),
+                                        )));
+                          }
+                        : null,
+                    child: const Text(
+                      'Continue',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ));
+              },
+            )
           ],
         ),
       ),

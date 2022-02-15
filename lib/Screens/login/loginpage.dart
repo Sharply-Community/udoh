@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marriage/exports.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:marriage/logic/cubit/controller_cubit.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -103,7 +105,10 @@ class LoginPage extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const PhoneLoginScreen()));
+                              builder: (context) => BlocProvider(
+                                    create: (context) => ControllerCubit(),
+                                    child: const PhoneLoginScreen(),
+                                  )));
                     },
                     child: const Padding(
                       padding: EdgeInsets.only(right: 15, left: 15),

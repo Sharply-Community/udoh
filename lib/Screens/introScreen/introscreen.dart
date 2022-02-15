@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:marriage/exports.dart';
+import 'package:marriage/logic/cubit/container_cubit.dart';
 import 'package:sizer/sizer.dart';
-
-enum Gender { login, register }
 
 class IntroSliderPage extends StatefulWidget {
   const IntroSliderPage({Key? key}) : super(key: key);
@@ -39,28 +39,33 @@ class _IntroSliderPageState extends State<IntroSliderPage> {
           Expanded(
             child: GestureDetector(
               onTap: () {
-                setState(() {
-                  selectedIndex = Gender.login;
-                });
+                final onboardingCubit =
+                    BlocProvider.of<ContainerCubit>(context);
+                onboardingCubit.genderChanged(Gender.login);
+
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => const LoginPage()));
               },
-              child: Container(
-                height: 55.0,
-                width: 170.w,
-                decoration: BoxDecoration(
-                    color: selectedIndex == Gender.login
-                        ? activeCardColor
-                        : inActiveCardColor,
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(
-                      color: color,
+              child: BlocBuilder<ContainerCubit, ContainerState>(
+                builder: (context, state) {
+                  return Container(
+                    height: 55.0,
+                    width: 170.w,
+                    decoration: BoxDecoration(
+                        color: state.selectedIndex == Gender.login
+                            ? activeCardColor
+                            : inActiveCardColor,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: color,
+                        )),
+                    child: const Center(
+                        child: Text(
+                      'LOGIN',
+                      style: TextStyle(fontWeight: FontWeight.bold),
                     )),
-                child: const Center(
-                    child: Text(
-                  'LOGIN',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                )),
+                  );
+                },
               ),
             ),
           ),
@@ -70,30 +75,35 @@ class _IntroSliderPageState extends State<IntroSliderPage> {
           Expanded(
             child: GestureDetector(
               onTap: () {
-                setState(() {
-                  selectedIndex = Gender.register;
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const RegisterScree()));
-                });
+                final onboardingCubit =
+                    BlocProvider.of<ContainerCubit>(context);
+                onboardingCubit.genderChanged(Gender.register);
+
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const RegisterScree()));
               },
-              child: Container(
-                height: 55.0,
-                width: 170.w,
-                decoration: BoxDecoration(
-                    color: selectedIndex == Gender.register
-                        ? activeCardColor
-                        : inActiveCardColor,
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(
-                      color: color,
+              child: BlocBuilder<ContainerCubit, ContainerState>(
+                builder: (context, state) {
+                  return Container(
+                    height: 55.0,
+                    width: 170.w,
+                    decoration: BoxDecoration(
+                        color: state.selectedIndex == Gender.register
+                            ? activeCardColor
+                            : inActiveCardColor,
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                          color: color,
+                        )),
+                    child: const Center(
+                        child: Text(
+                      'REGISTER',
+                      style: TextStyle(fontWeight: FontWeight.bold),
                     )),
-                child: const Center(
-                    child: Text(
-                  'REGISTER',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                )),
+                  );
+                },
               ),
             ),
           )

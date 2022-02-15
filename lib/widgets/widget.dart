@@ -2,8 +2,10 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:marriage/exports.dart';
+import 'package:marriage/logic/cubit/container_cubit.dart';
 import 'package:otp_text_field/otp_text_field.dart';
 import 'package:otp_text_field/style.dart';
 
@@ -230,10 +232,11 @@ class OtpTextFiled extends StatelessWidget {
         textFieldAlignment: MainAxisAlignment.spaceBetween,
         fieldStyle: FieldStyle.underline,
         onChanged: (pin) {
-          print("Successful:" + pin);
+          // final pin = SnackBar(content: Text('Successful'));
         },
-        onCompleted: (value) {
-          print("Successful:" + value);
+        onCompleted: (pin) {
+          final onboardingCubit = BlocProvider.of<ContainerCubit>(context);
+          onboardingCubit.colorChanged(pin);
         },
       ),
     );

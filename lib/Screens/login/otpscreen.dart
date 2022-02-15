@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marriage/exports.dart';
+import 'package:marriage/logic/cubit/container_cubit.dart';
 
 class OtpScreen extends StatefulWidget {
   const OtpScreen({Key? key}) : super(key: key);
@@ -10,25 +12,6 @@ class OtpScreen extends StatefulWidget {
 }
 
 class _OtpScreenState extends State<OtpScreen> {
-  late TextEditingController controller;
-  bool isButtonActive2 = true;
-
-  @override
-  void initState() {
-    controller = TextEditingController();
-    controller.addListener(() {
-      final isButtonActive2 = controller.text.isNotEmpty;
-      setState(() => this.isButtonActive2 = isButtonActive2);
-    });
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,28 +73,31 @@ class _OtpScreenState extends State<OtpScreen> {
                 const SizedBox(
                   height: 20,
                 ),
-                ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      shadowColor: color,
-                      onSurface: color,
-                      primary: color,
-                      maximumSize: const Size.fromHeight(45),
-                      fixedSize: const Size.fromWidth(350),
-                    ),
-                    onPressed: isButtonActive2
-                        ? () {
-                            setState(() => isButtonActive2 = false);
-                            controller.clear();
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const HomePage()));
-                          }
-                        : null,
-                    child: const Text(
-                      'Continue',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ))
+                BlocBuilder<ContainerCubit, ContainerState>(
+                  builder: (context, state) {
+                    return ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          shadowColor: color,
+                          onSurface: color,
+                          primary: color,
+                          maximumSize: const Size.fromHeight(45),
+                          fixedSize: const Size.fromWidth(350),
+                        ),
+                        onPressed: state.changeColor
+                            ? () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const HomePage()));
+                              }
+                            : null,
+                        child: const Text(
+                          'Continue',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ));
+                  },
+                )
               ],
             ),
           ),

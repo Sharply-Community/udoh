@@ -84,7 +84,14 @@ packages:
       name: dots_indicator
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.0"
+    version: "2.1.0"
+  equatable:
+    dependency: "direct main"
+    description:
+      name: equatable
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.3"
   expandable_text:
     dependency: "direct main"
     description:
@@ -178,7 +185,7 @@ packages:
       name: otp_text_field
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.1.1"
+    version: "1.1.2"
   path:
     dependency: transitive
     description:
