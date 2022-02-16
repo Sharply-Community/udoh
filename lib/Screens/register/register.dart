@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:marriage/exports.dart';
+import 'package:marriage/logic/cubit/controller_cubit.dart';
 
 class RegisterScree extends StatelessWidget {
   const RegisterScree({Key? key}) : super(key: key);
@@ -8,6 +10,7 @@ class RegisterScree extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Column(
           children: [
@@ -103,7 +106,10 @@ class RegisterScree extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const PhoneRegister()));
+                              builder: (context) => BlocProvider(
+                                    create: (context) => ControllerCubit(),
+                                    child: const PhoneRegister(),
+                                  )));
                     },
                     child: const Padding(
                       padding: EdgeInsets.only(right: 15, left: 15),

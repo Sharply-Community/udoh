@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marriage/exports.dart';
+import 'package:marriage/logic/cubit/container_cubit.dart';
 
 class DatePage extends StatefulWidget {
   const DatePage({Key? key}) : super(key: key);
@@ -21,6 +23,7 @@ class _DatePageState extends State<DatePage> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
+        resizeToAvoidBottomInset: false,
         body: SafeArea(
             child: Column(
           children: [
@@ -59,8 +62,10 @@ class _DatePageState extends State<DatePage> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) =>
-                                        const ChooseGender()));
+                                    builder: (context) => BlocProvider(
+                                          create: (context) => ContainerCubit(),
+                                          child: const ChooseGender(),
+                                        )));
                           },
                           child: const Text(
                             'CONTINUE',

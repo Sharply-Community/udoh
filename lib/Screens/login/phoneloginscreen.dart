@@ -15,9 +15,11 @@ class PhoneLoginScreen extends StatefulWidget {
 }
 
 class _PhoneLoginScreenState extends State<PhoneLoginScreen> {
+  final TextEditingController _phoneLogin = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Column(
           children: [
@@ -32,10 +34,8 @@ class _PhoneLoginScreenState extends State<PhoneLoginScreen> {
                       BlocProvider.of<ControllerCubit>(context);
                   changeColorCubit.updateColor(controller);
                 },
-                inputFormatters: <TextInputFormatter>[
-                  FilteringTextInputFormatter.allow(RegExp(r'[0-9]'))
-                ],
                 keyboardType: TextInputType.number,
+                controller: _phoneLogin,
                 style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,

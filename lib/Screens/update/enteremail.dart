@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:marriage/exports.dart';
+import 'package:marriage/logic/cubit/controller_cubit.dart';
 
 class EnterEmail extends StatefulWidget {
   const EnterEmail({Key? key}) : super(key: key);
@@ -10,25 +12,7 @@ class EnterEmail extends StatefulWidget {
 }
 
 class _EnterEmailState extends State<EnterEmail> {
-  bool btnEnable = false;
-  late TextEditingController _controller;
-
-  @override
-  void initState() {
-    _controller = TextEditingController();
-    _controller.addListener(() {
-      final btnEnable = _controller.text.isNotEmpty;
-      setState(() => this.btnEnable = btnEnable);
-    });
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
+  final TextEditingController _emailController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,46 +34,56 @@ class _EnterEmailState extends State<EnterEmail> {
                 right: 20,
               ),
               child: TextField(
-                controller: _controller,
+                controller: _emailController,
+                onChanged: (controller) {
+                  final textController =
+                      BlocProvider.of<ControllerCubit>(context);
+                  textController.updateColor(controller);
+                },
                 style:
                     const TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
-                  focusedBorder: const UnderlineInputBorder(
+                  focusedBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: color, width: 3.0),
                   ),
                   hintText: "Email email",
-                  enabledBorder: UnderlineInputBorder(
-                      borderSide: const BorderSide(color: color, width: 3.5),
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(color: color, width: 2.0),
                       borderRadius: BorderRadius.circular(10)),
                 ),
               ),
             ),
             Padding(
               padding: const EdgeInsets.only(left: 20, right: 20, top: 35),
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  shadowColor: color,
-                  onSurface: color,
-                  primary: color,
-                  maximumSize: const Size.fromHeight(60),
-                  fixedSize: const Size.fromWidth(350),
-                ),
-                onPressed: btnEnable
-                    ? () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const UpdateEmail()),
-                        );
-                        setState(() => btnEnable = false);
-                        _controller.clear();
-                      }
-                    : null,
-                child: const Text(
-                  'CONTINUE',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
+              child: BlocBuilder<ControllerCubit, ControllerState>(
+                builder: (context, state) {
+                  return ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      shadowColor: color,
+                      onSurface: color,
+                      primary: color,
+                      maximumSize: const Size.fromHeight(60),
+                      fixedSize: const Size.fromWidth(350),
+                    ),
+                    onPressed: state.controllerColor
+                        ? () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => BlocProvider(
+                                        create: (context) => ControllerCubit(),
+                                        child: const UpdateEmail(),
+                                      )),
+                            );
+                          }
+                        : null,
+                    child: const Text(
+                      'CONTINUE',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  );
+                },
               ),
             ),
             const SizedBox(

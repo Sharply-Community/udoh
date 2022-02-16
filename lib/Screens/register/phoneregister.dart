@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marriage/exports.dart';
 import 'package:flutter/services.dart';
+import 'package:marriage/logic/cubit/controller_cubit.dart';
 
 class PhoneRegister extends StatefulWidget {
   const PhoneRegister({Key? key}) : super(key: key);
@@ -10,28 +12,11 @@ class PhoneRegister extends StatefulWidget {
 }
 
 class _PhoneRegisterState extends State<PhoneRegister> {
-  late TextEditingController controller;
-  bool isButtonActive3 = true;
-
-  @override
-  void initState() {
-    controller = TextEditingController();
-    controller.addListener(() {
-      final isButtonActive3 = controller.text.isNotEmpty;
-      setState(() => this.isButtonActive3 = isButtonActive3);
-    });
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
-
+  final TextEditingController _phoneRegister = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Column(
           children: [
@@ -40,11 +25,14 @@ class _PhoneRegisterState extends State<PhoneRegister> {
             Container(
               padding: const EdgeInsets.only(left: 20, right: 20),
               child: TextFormField(
-                controller: controller,
-                inputFormatters: <TextInputFormatter>[
-                  FilteringTextInputFormatter.allow(RegExp(r'[0-9]'))
-                ],
+                controller: _phoneRegister,
                 keyboardType: TextInputType.number,
+                onChanged: (controller) {
+                  final onboardingCubit =
+                      BlocProvider.of<ControllerCubit>(context);
+                  onboardingCubit.updateColor(controller);
+                },
+                maxLength: 11,
                 style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -55,7 +43,7 @@ class _PhoneRegisterState extends State<PhoneRegister> {
                       borderRadius: BorderRadius.circular(10),
                       borderSide: const BorderSide(color: color, width: 2.0),
                     ),
-                    focusedBorder: UnderlineInputBorder(
+                    focusedBorder: OutlineInputBorder(
                       borderSide: const BorderSide(color: color, width: 5.0),
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -79,29 +67,34 @@ class _PhoneRegisterState extends State<PhoneRegister> {
                   ' Message and data rates may apply. The verified phone number can be used to login.'
                   'Learn what happens when your number changes.'),
             ),
-            ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  shadowColor: color,
-                  onSurface: color,
-                  primary: color,
-                  maximumSize: const Size.fromHeight(45),
-                  fixedSize: const Size.fromWidth(350),
-                ),
-                onPressed: isButtonActive3
-                    ? () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const RegisterOtp()),
-                        );
-                        setState(() => isButtonActive3 = false);
-                        controller.clear();
-                      }
-                    : null,
-                child: const Text(
-                  'Continue',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ))
+            BlocBuilder<ControllerCubit, ControllerState>(
+              builder: (context, state) {
+                return ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      shadowColor: color,
+                      onSurface: color,
+                      primary: color,
+                      maximumSize: const Size.fromHeight(45),
+                      fixedSize: const Size.fromWidth(350),
+                    ),
+                    onPressed: state.controllerColor
+                        ? () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => BlocProvider(
+                                        create: (context) => ControllerCubit(),
+                                        child: const RegisterOtp(),
+                                      )),
+                            );
+                          }
+                        : null,
+                    child: const Text(
+                      'Continue',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ));
+              },
+            )
           ],
         ),
       ),

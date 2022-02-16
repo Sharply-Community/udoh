@@ -98,6 +98,7 @@ class _HomePageState extends State<HomePage> {
               color: Colors.white,
               width: double.infinity,
               child: Column(
+                verticalDirection: VerticalDirection.down,
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(left: 8, right: 8, top: 10),
@@ -293,6 +294,185 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                   )
+                ],
+              ),
+            ),
+            Container(
+              height: 250,
+              color: Colors.white,
+              width: double.infinity,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8, right: 8, top: 10),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CircleAvatar(
+                          radius: 20,
+                          child: Image.asset('assets/unsplash.png'),
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                const Text(
+                                  'Loving World',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                Text(
+                                  'Folow',
+                                  style: TextStyle(
+                                      color: textColor,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            Row(
+                              children: const [
+                                Text(
+                                  'Posted by Richard Joseph Strachan',
+                                  style: TextStyle(
+                                      color: Colors.black45,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(
+                                  width: 15,
+                                ),
+                                Text(
+                                  'Jan 3',
+                                  style: TextStyle(
+                                      color: Colors.black45,
+                                      fontWeight: FontWeight.bold),
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(
+                        top: 10, left: 10, right: 10, bottom: 5),
+                    child: ExpandableText(
+                      'Bob Marley was once asked if there was a perfect woman.'
+                      'And he replied Who cares about perfection? Even the moon is not perfecr, it is full of craters, What about the sea? Very',
+                      expandText: 'showMore',
+                      collapseText: 'showLess',
+                    ),
+                  ),
+                  Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: Container(
+                          height: 30,
+                          width: 155,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: const Color(0xffE5E5E5),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 5),
+                                child: InkWell(
+                                    onTap: () => setState(() {
+                                          likePost = likedPost.like;
+                                        }),
+                                    child: Icon(
+                                      Icons.thumb_up_alt_sharp,
+                                      color: likePost == likedPost.like
+                                          ? Colors.blue
+                                          : Colors.black,
+                                    )),
+                              ),
+                              const SizedBox(
+                                width: 12,
+                              ),
+                              const Text(
+                                '2.3K',
+                                style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              const SizedBox(
+                                width: 5,
+                              ),
+                              const VerticalDivider(
+                                indent: 5,
+                                endIndent: 5,
+                                thickness: 2,
+                                color: Colors.black,
+                              ),
+                              const SizedBox(
+                                width: 5,
+                              ),
+                              InkWell(
+                                  onTap: () => setState(
+                                        () {
+                                          likePost = likedPost.unlike;
+                                        },
+                                      ),
+                                  child: Icon(
+                                    Icons.thumb_down_alt,
+                                    color: likePost == likedPost.unlike
+                                        ? Colors.blue
+                                        : Colors.black,
+                                  )),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              const Text('70',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold))
+                            ],
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 25,
+                      ),
+                      const Icon(Icons.autorenew),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      const Text('7',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold)),
+                      const SizedBox(
+                        width: 15,
+                      ),
+                      const Icon(Icons.maps_ugc_outlined),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      const Text('21',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold)),
+                      const Padding(
+                        padding: EdgeInsets.only(left: 80),
+                        child: Icon(Icons.share),
+                      )
+                    ],
+                  ),
                 ],
               ),
             ),

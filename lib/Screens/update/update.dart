@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:marriage/logic/cubit/controller_cubit.dart';
 import 'package:sizer/sizer.dart';
 import 'package:marriage/exports.dart';
 
@@ -10,25 +12,7 @@ class UpdateEmail extends StatefulWidget {
 }
 
 class _UpdateEmailState extends State<UpdateEmail> {
-  late TextEditingController _controller;
-  bool btnButton = false;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = TextEditingController();
-    _controller.addListener(() {
-      final btnButton = _controller.text.isNotEmpty;
-      setState(() => this.btnButton = btnButton);
-    });
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _controller.dispose();
-  }
-
+  final TextEditingController _emailUpdate = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,14 +30,19 @@ class _UpdateEmailState extends State<UpdateEmail> {
               child: AspectRatio(
                 aspectRatio: 1.5,
                 child: TextField(
-                  controller: _controller,
+                  controller: _emailUpdate,
+                  onChanged: (controller) {
+                    final textController =
+                        BlocProvider.of<ControllerCubit>(context);
+                    textController.updateColor(controller);
+                  },
                   showCursor: false,
                   readOnly: false,
                   style: const TextStyle(
                       fontWeight: FontWeight.bold, fontSize: 24),
-                  keyboardType: TextInputType.number,
+                  keyboardType: TextInputType.name,
                   decoration: const InputDecoration(
-                    focusedBorder: UnderlineInputBorder(
+                    focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(color: color, width: 2.0)),
                     enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: color, width: 2.0),
@@ -69,29 +58,31 @@ class _UpdateEmailState extends State<UpdateEmail> {
             child: Text(
                 'This is how it will appear in marriage and you will not be able to change it'),
           ),
-          ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                shadowColor: color,
-                onSurface: color,
-                primary: color,
-                maximumSize: const Size.fromHeight(45),
-                fixedSize: const Size.fromWidth(350),
-              ),
-              onPressed: btnButton
-                  ? () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const DatePage()),
-                      );
-                      setState(() => btnButton = false);
-                      _controller.clear();
-                    }
-                  : null,
-              child: const Text(
-                'CONTINUE',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ))
+          BlocBuilder<ControllerCubit, ControllerState>(
+            builder: (context, state) {
+              return ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    shadowColor: color,
+                    onSurface: color,
+                    primary: color,
+                    maximumSize: const Size.fromHeight(45),
+                    fixedSize: const Size.fromWidth(350),
+                  ),
+                  onPressed: state.controllerColor
+                      ? () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const DatePage()),
+                          );
+                        }
+                      : null,
+                  child: const Text(
+                    'CONTINUE',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ));
+            },
+          )
         ],
       )),
     );

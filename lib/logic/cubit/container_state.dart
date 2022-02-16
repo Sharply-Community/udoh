@@ -7,6 +7,7 @@ abstract class ContainerState extends Equatable {
   List<Object> get props => [];
 
   get selectedIndex => null;
+  get selectedGender => null;
   get changeColor => false;
 }
 
@@ -26,6 +27,21 @@ class SetstateChanged extends ContainerState {
 
   @override
   int get hashCode => selectedIndex.hashCode;
+}
+
+class GenderSelected extends ContainerState {
+  @override
+  final Select selectedGender;
+  const GenderSelected(this.selectedGender);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    return other is GenderSelected && other.selectedGender == selectedGender;
+  }
+
+  @override
+  int get hashCode => selectedGender.hashCode;
 }
 
 class ChangeButtonColor extends ContainerState {

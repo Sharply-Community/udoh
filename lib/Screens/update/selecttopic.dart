@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:marriage/exports.dart';
 import 'package:chips_choice_null_safety/chips_choice_null_safety.dart';
 
-enum selected { active, inActive }
-
 class SelectTopic extends StatefulWidget {
   const SelectTopic({Key? key}) : super(key: key);
 
@@ -14,7 +12,6 @@ class SelectTopic extends StatefulWidget {
 
 class _SelectTopicState extends State<SelectTopic> {
   var btnColor = const Color(0xffE5E5E5);
-  selected? selectedColor;
   List<String> tags = [];
   List<String> interest = [
     'Finance',
@@ -38,6 +35,7 @@ class _SelectTopicState extends State<SelectTopic> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
           child: Column(
         children: [

@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marriage/exports.dart';
+import 'package:marriage/logic/cubit/controller_cubit.dart';
 
 class RegisterOtp extends StatefulWidget {
   const RegisterOtp({Key? key}) : super(key: key);
@@ -13,6 +15,7 @@ class _RegisterOtpState extends State<RegisterOtp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -69,26 +72,35 @@ class _RegisterOtpState extends State<RegisterOtp> {
                   const SizedBox(
                     height: 20,
                   ),
-                  ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        shadowColor: color,
-                        onSurface: color,
-                        primary: color,
-                        maximumSize: const Size.fromHeight(45),
-                        fixedSize: const Size.fromWidth(350),
-                      ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const EnterEmail(),
+                  BlocBuilder<ControllerCubit, ControllerState>(
+                    builder: (context, state) {
+                      return ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            shadowColor: color,
+                            onSurface: color,
+                            primary: color,
+                            maximumSize: const Size.fromHeight(45),
+                            fixedSize: const Size.fromWidth(350),
                           ),
-                        );
-                      },
-                      child: const Text(
-                        'Continue',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ))
+                          onPressed: state.controllerColor
+                              ? () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => BlocProvider(
+                                        create: (context) => ControllerCubit(),
+                                        child: const EnterEmail(),
+                                      ),
+                                    ),
+                                  );
+                                }
+                              : null,
+                          child: const Text(
+                            'Continue',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ));
+                    },
+                  )
                 ],
               ),
             ),
