@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marriage/exports.dart';
 import 'package:chips_choice_null_safety/chips_choice_null_safety.dart';
+import 'package:marriage/logic/cubit/feelings_cubit.dart';
+import 'package:marriage/logic/cubit/posts_cubit.dart';
 
 class SelectTopic extends StatefulWidget {
   const SelectTopic({Key? key}) : super(key: key);
@@ -92,8 +95,16 @@ class _SelectTopicState extends State<SelectTopic> {
               fixedSize: const Size.fromWidth(350),
             ),
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const HomePage()));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => MultiBlocProvider(providers: [
+                            BlocProvider<FeelingsCubit>(
+                                create: (BuildContext context) =>
+                                    FeelingsCubit()),
+                            BlocProvider<PostsCubit>(
+                                create: (BuildContext context) => PostsCubit())
+                          ], child: const HomePage())));
             },
             child: Center(
               child: Row(

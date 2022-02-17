@@ -4,10 +4,11 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:expandable_text/expandable_text.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:marriage/exports.dart';
-
-enum likedPost { like, unlike }
+import 'package:marriage/logic/cubit/feelings_cubit.dart';
+import 'package:marriage/logic/cubit/posts_cubit.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -17,7 +18,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  likedPost? likePost;
+  LikedPhoto? feelings;
+  LikedPost? posts;
   final textColor = const Color(0xff6C63FF);
   int _currentIndex = 0;
   @override
@@ -210,16 +212,25 @@ class _HomePageState extends State<HomePage> {
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.only(left: 5),
-                                  child: InkWell(
-                                      onTap: () => setState(() {
-                                            likePost = likedPost.like;
-                                          }),
-                                      child: Icon(
-                                        Icons.thumb_up_alt_sharp,
-                                        color: likePost == likedPost.like
-                                            ? Colors.blue
-                                            : Colors.black,
-                                      )),
+                                  child:
+                                      BlocBuilder<FeelingsCubit, FeelingsState>(
+                                    builder: (context, state) {
+                                      return InkWell(
+                                          onTap: () {
+                                            final liked =
+                                                BlocProvider.of<FeelingsCubit>(
+                                                    context);
+                                            liked.likedPhoto(LikedPhoto.like);
+                                          },
+                                          child: Icon(
+                                            Icons.thumb_up_alt_sharp,
+                                            color: state.feelings ==
+                                                    LikedPhoto.like
+                                                ? Colors.blue
+                                                : Colors.black,
+                                          ));
+                                    },
+                                  ),
                                 ),
                                 const SizedBox(
                                   width: 12,
@@ -242,18 +253,25 @@ class _HomePageState extends State<HomePage> {
                                 const SizedBox(
                                   width: 5,
                                 ),
-                                InkWell(
-                                    onTap: () => setState(
-                                          () {
-                                            likePost = likedPost.unlike;
-                                          },
-                                        ),
-                                    child: Icon(
-                                      Icons.thumb_down_alt,
-                                      color: likePost == likedPost.unlike
-                                          ? Colors.blue
-                                          : Colors.black,
-                                    )),
+                                BlocBuilder<FeelingsCubit, FeelingsState>(
+                                  builder: (context, state) {
+                                    return InkWell(
+                                        onTap: () {
+                                          final photoDisLike =
+                                              BlocProvider.of<FeelingsCubit>(
+                                                  context);
+                                          photoDisLike
+                                              .likedPhoto(LikedPhoto.dislike);
+                                        },
+                                        child: Icon(
+                                          Icons.thumb_down_alt,
+                                          color: state.feelings ==
+                                                  LikedPhoto.dislike
+                                              ? Colors.blue
+                                              : Colors.black,
+                                        ));
+                                  },
+                                ),
                                 const SizedBox(
                                   width: 10,
                                 ),
@@ -390,16 +408,23 @@ class _HomePageState extends State<HomePage> {
                             children: [
                               Padding(
                                 padding: const EdgeInsets.only(left: 5),
-                                child: InkWell(
-                                    onTap: () => setState(() {
-                                          likePost = likedPost.like;
-                                        }),
-                                    child: Icon(
-                                      Icons.thumb_up_alt_sharp,
-                                      color: likePost == likedPost.like
-                                          ? Colors.blue
-                                          : Colors.black,
-                                    )),
+                                child: BlocBuilder<PostsCubit, PostsState>(
+                                  builder: (context, state) {
+                                    return InkWell(
+                                        onTap: () {
+                                          final postLike =
+                                              BlocProvider.of<PostsCubit>(
+                                                  context);
+                                          postLike.likedPost(LikedPost.like);
+                                        },
+                                        child: Icon(
+                                          Icons.thumb_up_alt_sharp,
+                                          color: state.posts == LikedPost.like
+                                              ? Colors.blue
+                                              : Colors.black,
+                                        ));
+                                  },
+                                ),
                               ),
                               const SizedBox(
                                 width: 12,
@@ -422,18 +447,24 @@ class _HomePageState extends State<HomePage> {
                               const SizedBox(
                                 width: 5,
                               ),
-                              InkWell(
-                                  onTap: () => setState(
-                                        () {
-                                          likePost = likedPost.unlike;
-                                        },
-                                      ),
-                                  child: Icon(
-                                    Icons.thumb_down_alt,
-                                    color: likePost == likedPost.unlike
-                                        ? Colors.blue
-                                        : Colors.black,
-                                  )),
+                              BlocBuilder<PostsCubit, PostsState>(
+                                builder: (context, state) {
+                                  return InkWell(
+                                      onTap: () {
+                                        final postDisLike =
+                                            BlocProvider.of<PostsCubit>(
+                                                context);
+                                        postDisLike
+                                            .likedPost(LikedPost.dislike);
+                                      },
+                                      child: Icon(
+                                        Icons.thumb_down_alt,
+                                        color: state.posts == LikedPost.dislike
+                                            ? Colors.blue
+                                            : Colors.black,
+                                      ));
+                                },
+                              ),
                               const SizedBox(
                                 width: 10,
                               ),
