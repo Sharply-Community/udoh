@@ -2,7 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marriage/exports.dart';
-import 'package:marriage/logic/cubit/container_cubit.dart';
+
+import 'package:marriage/logic/cubit/controller_cubit.dart';
 import 'package:marriage/logic/cubit/feelings_cubit.dart';
 import 'package:marriage/logic/cubit/posts_cubit.dart';
 
@@ -76,7 +77,7 @@ class _OtpScreenState extends State<OtpScreen> {
                 const SizedBox(
                   height: 20,
                 ),
-                BlocBuilder<ContainerCubit, ContainerState>(
+                BlocBuilder<ControllerCubit, ControllerState>(
                   builder: (context, state) {
                     return ElevatedButton(
                         style: ElevatedButton.styleFrom(
@@ -86,7 +87,7 @@ class _OtpScreenState extends State<OtpScreen> {
                           maximumSize: const Size.fromHeight(45),
                           fixedSize: const Size.fromWidth(350),
                         ),
-                        onPressed: state.changeColor
+                        onPressed: state.controllerColor
                             ? () {
                                 Navigator.push(
                                     context,

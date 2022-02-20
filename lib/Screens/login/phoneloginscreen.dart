@@ -88,7 +88,8 @@ class _PhoneLoginScreenState extends State<PhoneLoginScreen> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) => BlocProvider(
-                                          create: (context) => ContainerCubit(),
+                                          create: (context) =>
+                                              ControllerCubit(),
                                           child: const OtpScreen(),
                                         )));
                           }

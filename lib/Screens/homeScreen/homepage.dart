@@ -286,7 +286,15 @@ class _HomePageState extends State<HomePage> {
                         const SizedBox(
                           width: 25,
                         ),
-                        const Icon(Icons.autorenew),
+                        GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const ShareScreen()));
+                            },
+                            child: const Icon(Icons.autorenew)),
                         const SizedBox(
                           width: 5,
                         ),

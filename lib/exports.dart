@@ -17,3 +17,4 @@ export 'package:marriage/Screens/otherScreens/date.dart';
 export 'package:marriage/Screens/otherScreens/choosegender.dart';
 export 'package:marriage/Screens/update/selecttopic.dart';
 export 'package:marriage/Screens/homeScreen/homepage.dart';
+export 'package:marriage/Screens/otherScreens/share.dart';
