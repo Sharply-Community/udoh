@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+const textColor = Color(0xff6C63FF);
 const color = Color(0xffFD3775);
 const bodyStyle = TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold);
 const activeCardColor = color;

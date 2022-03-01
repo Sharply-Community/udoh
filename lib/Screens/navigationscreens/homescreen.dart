@@ -1,93 +1,18 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:expandable_text/expandable_text.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:marriage/exports.dart';
 import 'package:marriage/logic/cubit/feelings_cubit.dart';
 import 'package:marriage/logic/cubit/posts_cubit.dart';
+import 'package:marriage/exports.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class HomeScreens extends StatelessWidget {
+  const HomeScreens({Key? key}) : super(key: key);
 
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  LikedPhoto? feelings;
-  LikedPost? posts;
-  final textColor = const Color(0xff6C63FF);
-  int _currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       backgroundColor: const Color(0xffE5E5E5),
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        backgroundColor: Colors.white,
-        title: Row(
-          children: const <Widget>[
-            CircleAvatar(
-              radius: 15,
-              backgroundColor: color,
-              child: Text(
-                'M',
-                style:
-                    TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-              ),
-            ),
-            SizedBox(
-              width: 10,
-            ),
-            Center(
-              child: Text(
-                'Home',
-                style:
-                    TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            SizedBox(
-              width: 240,
-            ),
-            Icon(
-              Icons.search,
-              color: color,
-              size: 35,
-            )
-          ],
-        ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        selectedItemColor: color,
-        selectedFontSize: 10,
-        unselectedFontSize: 5,
-        unselectedItemColor: Colors.black,
-        type: BottomNavigationBarType.fixed,
-        currentIndex: _currentIndex,
-        onTap: (index) => setState(
-          () => _currentIndex = index,
-        ),
-        items: const [
-          BottomNavigationBarItem(label: "Home", icon: Icon(Icons.home)),
-          BottomNavigationBarItem(
-            label: "Question",
-            icon: Icon(FontAwesomeIcons.question),
-          ),
-          BottomNavigationBarItem(label: "Groups", icon: Icon(Icons.group)),
-          BottomNavigationBarItem(
-              label: "Notification", icon: Icon(Icons.notification_add)),
-          BottomNavigationBarItem(label: "Settings", icon: Icon(Icons.settings))
-        ],
-      ),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(
@@ -118,14 +43,14 @@ class _HomePageState extends State<HomePage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
-                              children: [
-                                const Text(
+                              children: const [
+                                Text(
                                   'Loving World',
                                   style: TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                const SizedBox(
+                                SizedBox(
                                   width: 10,
                                 ),
                                 Text(
@@ -345,14 +270,14 @@ class _HomePageState extends State<HomePage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
-                              children: [
-                                const Text(
+                              children: const [
+                                Text(
                                   'Loving World',
                                   style: TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                const SizedBox(
+                                SizedBox(
                                   width: 10,
                                 ),
                                 Text(

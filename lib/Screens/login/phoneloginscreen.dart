@@ -4,7 +4,6 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marriage/exports.dart';
-import 'package:marriage/logic/cubit/container_cubit.dart';
 import 'package:marriage/logic/cubit/controller_cubit.dart';
 
 class PhoneLoginScreen extends StatefulWidget {

@@ -5,6 +5,7 @@ import 'package:marriage/exports.dart';
 
 import 'package:marriage/logic/cubit/controller_cubit.dart';
 import 'package:marriage/logic/cubit/feelings_cubit.dart';
+import 'package:marriage/logic/cubit/pagecontroller_cubit.dart';
 import 'package:marriage/logic/cubit/posts_cubit.dart';
 
 class OtpScreen extends StatefulWidget {
@@ -101,7 +102,11 @@ class _OtpScreenState extends State<OtpScreen> {
                                               BlocProvider<PostsCubit>(
                                                   create:
                                                       (BuildContext context) =>
-                                                          PostsCubit())
+                                                          PostsCubit()),
+                                              BlocProvider<PagecontrollerCubit>(
+                                                  create: (BuildContext
+                                                          context) =>
+                                                      PagecontrollerCubit()),
                                             ], child: const HomePage())));
                               }
                             : null,

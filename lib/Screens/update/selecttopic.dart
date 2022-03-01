@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marriage/exports.dart';
 import 'package:chips_choice_null_safety/chips_choice_null_safety.dart';
 import 'package:marriage/logic/cubit/feelings_cubit.dart';
+import 'package:marriage/logic/cubit/pagecontroller_cubit.dart';
 import 'package:marriage/logic/cubit/posts_cubit.dart';
 
 class SelectTopic extends StatefulWidget {
@@ -103,7 +104,10 @@ class _SelectTopicState extends State<SelectTopic> {
                                 create: (BuildContext context) =>
                                     FeelingsCubit()),
                             BlocProvider<PostsCubit>(
-                                create: (BuildContext context) => PostsCubit())
+                                create: (BuildContext context) => PostsCubit()),
+                            BlocProvider<PagecontrollerCubit>(
+                                create: (BuildContext context) =>
+                                    PagecontrollerCubit())
                           ], child: const HomePage())));
             },
             child: Center(
