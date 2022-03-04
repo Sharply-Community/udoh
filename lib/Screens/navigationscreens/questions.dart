@@ -35,7 +35,7 @@ class QuestionsScreen extends StatelessWidget {
                 const Expanded(
                   child: TabBarView(
                     children: [
-                      Icon(Icons.ac_unit),
+                      TabOne(),
                       Icon(Icons.ac_unit),
                       Icon(Icons.ac_unit)
                     ],
