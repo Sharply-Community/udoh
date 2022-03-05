@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:marriage/Screens/navigationscreens/tabs/answerdraft.dart';
+import 'package:marriage/Screens/navigationscreens/tabs/request.dart';
 import 'package:marriage/exports.dart';
 
 class QuestionsScreen extends StatelessWidget {
@@ -34,11 +36,7 @@ class QuestionsScreen extends StatelessWidget {
                 ),
                 const Expanded(
                   child: TabBarView(
-                    children: [
-                      TabOne(),
-                      Icon(Icons.ac_unit),
-                      Icon(Icons.ac_unit)
-                    ],
+                    children: [ForYou(), Request(), AnswerDraft()],
                   ),
                 ),
               ],
