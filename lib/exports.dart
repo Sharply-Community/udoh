@@ -26,3 +26,4 @@ export 'package:marriage/Screens/navigationscreens/notification.dart';
 export 'package:marriage/Screens/navigationscreens/questions.dart';
 export 'package:marriage/Screens/navigationscreens/settings.dart';
 export 'package:marriage/Screens/navigationscreens/tabs/tabone.dart';
+export 'package:marriage/Screens/navigationscreens/tabs/tabonedata.dart';
