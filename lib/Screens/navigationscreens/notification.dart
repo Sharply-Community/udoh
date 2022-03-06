@@ -5,9 +5,20 @@ class NotificationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('Notification'),
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      body: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: const [
+              Text(
+                'Mark All As Read',
+              ),
+              Icon(Icons.settings),
+            ],
+          )
+        ],
       ),
     );
   }
