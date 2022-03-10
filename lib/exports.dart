@@ -22,7 +22,6 @@ export 'package:marriage/Screens/otherScreens/sharedretweet.dart';
 export 'package:marriage/Screens/navigationscreens/groups.dart';
 export 'package:marriage/Screens/navigationscreens/homepage.dart';
 export 'package:marriage/Screens/navigationscreens/homescreen.dart';
-export 'package:marriage/Screens/navigationscreens/notification.dart';
 export 'package:marriage/Screens/navigationscreens/questions.dart';
 export 'package:marriage/Screens/navigationscreens/settings.dart';
 export 'package:marriage/Screens/navigationscreens/tabs/foryou.dart';

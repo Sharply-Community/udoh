@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:marriage/Screens/navigationscreens/notificationsettings/notification.dart';
 import 'package:marriage/exports.dart';
 import 'package:marriage/logic/cubit/pagecontroller_cubit.dart';
 
