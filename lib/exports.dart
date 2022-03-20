@@ -26,3 +26,4 @@ export 'package:marriage/Screens/navigationscreens/questions.dart';
 export 'package:marriage/Screens/navigationscreens/settings.dart';
 export 'package:marriage/Screens/navigationscreens/tabs/foryou.dart';
 export 'package:marriage/Screens/navigationscreens/tabs/foryoudata.dart';
+export 'package:marriage/Screens/navigationscreens/notificationsettings/notificationscreens/reusable.dart';

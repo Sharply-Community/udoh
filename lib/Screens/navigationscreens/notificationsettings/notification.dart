@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:marriage/Screens/navigationscreens/notificationsettings/notificationscreens/container1.dart';
 import 'package:marriage/Screens/navigationscreens/notificationsettings/notificationscreens/container2.dart';
 
+import 'notificationscreens/settings/notificationsetting.dart';
+
 class NotificationScreen extends StatelessWidget {
   const NotificationScreen({Key? key}) : super(key: key);
 
@@ -24,7 +26,15 @@ class NotificationScreen extends StatelessWidget {
                       color: Colors.black,
                       fontWeight: FontWeight.bold),
                 ),
-                InkWell(onTap: () {}, child: const Icon(Icons.settings))
+                InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const NotificationSettings()));
+                    },
+                    child: const Icon(Icons.settings))
               ],
             ),
           ),
