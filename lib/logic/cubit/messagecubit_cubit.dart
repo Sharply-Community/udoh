@@ -7,6 +7,6 @@ class MessagecubitCubit extends Cubit<MessagecubitState> {
   MessagecubitCubit() : super(MessagecubitInitial());
 
   messageToggle(bool message) {
-    emit(const Message(message: false));
+    emit(Message(message: false));
   }
 }

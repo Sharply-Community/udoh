@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 part of 'messagecubit_cubit.dart';
 
 abstract class MessagecubitState extends Equatable {
@@ -12,9 +14,9 @@ class MessagecubitInitial extends MessagecubitState {}
 
 class Message extends MessagecubitState {
   @override
-  final bool message;
+  bool message;
 
-  const Message({required this.message});
+  Message({required this.message});
 
   @override
   bool operator ==(Object other) {

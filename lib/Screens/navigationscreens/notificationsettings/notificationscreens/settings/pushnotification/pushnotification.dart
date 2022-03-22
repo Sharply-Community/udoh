@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:marriage/Screens/navigationscreens/notificationsettings/notificationscreens/settings/pushnotification/groups.dart';
+import 'package:marriage/Screens/navigationscreens/notificationsettings/notificationscreens/settings/pushnotification/yournetwork.dart';
+import 'package:marriage/logic/cubit/acceptedpost_cubit.dart';
+import 'package:marriage/logic/cubit/answerhighlight_cubit.dart';
 import 'package:marriage/logic/cubit/commentcubit_cubit.dart';
+import 'package:marriage/logic/cubit/groupinvite_cubit.dart';
+import 'package:marriage/logic/cubit/grouprecommendation_cubit.dart';
 import 'package:marriage/logic/cubit/messagecubit_cubit.dart';
+import 'package:marriage/logic/cubit/newfollowers_cubit.dart';
+import 'package:marriage/logic/cubit/newpost_cubit.dart';
+import 'package:marriage/logic/cubit/questionshighlight_cubit.dart';
 import 'package:marriage/logic/cubit/taggedcubit_cubit.dart';
 
 import '../../reusable.dart';
@@ -49,11 +58,52 @@ class PushNotificationScreen extends StatelessWidget {
                 text: 'Messages, Comments & Tagged',
               ),
             ),
-            const SettingsWidget(
-              text: 'Groups',
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => MultiBlocProvider(providers: [
+                              BlocProvider<GroupinviteCubit>(
+                                  create: (BuildContext context) =>
+                                      GroupinviteCubit()),
+                              BlocProvider<GrouprecommendationCubit>(
+                                  create: (BuildContext context) =>
+                                      GrouprecommendationCubit()),
+                              BlocProvider<NewpostCubit>(
+                                create: (BuildContext context) =>
+                                    NewpostCubit(),
+                              ),
+                              BlocProvider<AcceptedpostCubit>(
+                                  create: (BuildContext context) =>
+                                      AcceptedpostCubit())
+                            ], child: const Groups())));
+              },
+              child: const SettingsWidget(
+                text: 'Groups',
+              ),
             ),
-            const SettingsWidget(
-              text: 'You & Your Network',
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => MultiBlocProvider(providers: [
+                              BlocProvider<NewfollowersCubit>(
+                                  create: (BuildContext context) =>
+                                      NewfollowersCubit()),
+                              BlocProvider<AnswerhighlightCubit>(
+                                  create: (BuildContext context) =>
+                                      AnswerhighlightCubit()),
+                              BlocProvider<QuestionshighlightCubit>(
+                                create: (BuildContext context) =>
+                                    QuestionshighlightCubit(),
+                              )
+                            ], child: const YouAndYourNetwork())));
+              },
+              child: const SettingsWidget(
+                text: 'You & Your Network',
+              ),
             ),
             const SizedBox(
               height: 6,

@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 part of 'commentcubit_cubit.dart';
 
 abstract class CommentcubitState extends Equatable {
@@ -12,8 +14,8 @@ class CommentcubitInitial extends CommentcubitState {}
 
 class Comment extends CommentcubitState {
   @override
-  final bool comment;
-  const Comment({required this.comment});
+  bool comment;
+  Comment({required this.comment});
 
   @override
   bool operator ==(Object other) {

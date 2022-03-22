@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:marriage/logic/cubit/acceptedpost_cubit.dart';
+import 'package:marriage/logic/cubit/answerhighlight_cubit.dart';
 import 'package:marriage/logic/cubit/commentcubit_cubit.dart';
+import 'package:marriage/logic/cubit/groupinvite_cubit.dart';
+import 'package:marriage/logic/cubit/grouprecommendation_cubit.dart';
 import 'package:marriage/logic/cubit/messagecubit_cubit.dart';
+import 'package:marriage/logic/cubit/newfollowers_cubit.dart';
+import 'package:marriage/logic/cubit/newpost_cubit.dart';
+import 'package:marriage/logic/cubit/questionshighlight_cubit.dart';
 import 'package:marriage/logic/cubit/taggedcubit_cubit.dart';
 
 class SettingsWidget extends StatelessWidget {
@@ -58,7 +65,7 @@ class Headersetting extends StatelessWidget {
                 onTap: () {
                   Navigator.pop(context);
                 },
-                child: Icon(Icons.arrow_back)),
+                child: const Icon(Icons.arrow_back)),
             const SizedBox(
               width: 5,
             ),
@@ -156,6 +163,63 @@ class Switched extends StatelessWidget {
   }
 }
 
+class Swith extends StatelessWidget {
+  final String text;
+  final String string;
+  final String text2;
+  final Widget child;
+  const Swith(
+      {required this.text,
+      required this.string,
+      required this.text2,
+      required this.child,
+      Key? key})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 55,
+      width: double.infinity,
+      color: Colors.white,
+      child: Padding(
+        padding: const EdgeInsets.only(left: 5),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Center(
+                    child: Text(text,
+                        style: const TextStyle(
+                            color: Colors.black, fontSize: 15))),
+                const SizedBox(
+                  height: 6,
+                ),
+                Center(
+                  child: Text(string,
+                      style:
+                          const TextStyle(fontSize: 12, color: Colors.black)),
+                ),
+                Center(
+                  child: Text(text2,
+                      style:
+                          const TextStyle(fontSize: 12, color: Colors.black)),
+                ),
+              ],
+            ),
+            Center(
+              child: child,
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 Widget messageSwitch() => BlocBuilder<MessagecubitCubit, MessagecubitState>(
       builder: (context, state) {
         return Transform.scale(
@@ -196,6 +260,117 @@ Widget taggedSwitch() => BlocBuilder<TaggedcubitCubit, TaggedcubitState>(
                 final taggedToggleSwitch =
                     BlocProvider.of<TaggedcubitCubit>(context);
                 taggedToggleSwitch.taggedToggle(tagged);
+              }),
+        );
+      },
+    );
+
+Widget groupInviteSwitch() => BlocBuilder<GroupinviteCubit, GroupinviteState>(
+      builder: (context, state) {
+        return Transform.scale(
+          scale: 1.5,
+          child: Switch.adaptive(
+              value: state.groupinvite,
+              onChanged: (groupinvite) {
+                final groupInviteToggleSwitch =
+                    BlocProvider.of<GroupinviteCubit>(context);
+                groupInviteToggleSwitch.groupInvite(groupinvite);
+              }),
+        );
+      },
+    );
+
+Widget groupRecommendationSwitch() =>
+    BlocBuilder<GrouprecommendationCubit, GrouprecommendationState>(
+      builder: (context, state) {
+        return Transform.scale(
+          scale: 1.5,
+          child: Switch.adaptive(
+              value: state.grouprecommendation,
+              onChanged: (grouprecommendation) {
+                final groupRecommendationToggleSwitch =
+                    BlocProvider.of<GrouprecommendationCubit>(context);
+                groupRecommendationToggleSwitch
+                    .groupRecommendation(grouprecommendation);
+              }),
+        );
+      },
+    );
+
+Widget newPostSwitch() => BlocBuilder<NewpostCubit, NewpostState>(
+      builder: (context, state) {
+        return Transform.scale(
+          scale: 1.5,
+          child: Switch.adaptive(
+              value: state.newpost,
+              onChanged: (newpost) {
+                final newPostToggleSwitch =
+                    BlocProvider.of<NewpostCubit>(context);
+                newPostToggleSwitch.newPost(newpost);
+              }),
+        );
+      },
+    );
+
+Widget acceptedPostSwitch() =>
+    BlocBuilder<AcceptedpostCubit, AcceptedpostState>(
+      builder: (context, state) {
+        return Transform.scale(
+          scale: 1.5,
+          child: Switch.adaptive(
+              value: state.acceptedpost,
+              onChanged: (acceptedpost) {
+                final acceptedPostToggleSwitch =
+                    BlocProvider.of<AcceptedpostCubit>(context);
+                acceptedPostToggleSwitch.acceptedPost(acceptedpost);
+              }),
+        );
+      },
+    );
+
+Widget newFollowersSwitch() =>
+    BlocBuilder<NewfollowersCubit, NewfollowersState>(
+      builder: (context, state) {
+        return Transform.scale(
+          scale: 1.5,
+          child: Switch.adaptive(
+              value: state.newfollowers,
+              onChanged: (newfollowers) {
+                final newFollowersToggleSwitch =
+                    BlocProvider.of<NewfollowersCubit>(context);
+                newFollowersToggleSwitch.newFollower(newfollowers);
+              }),
+        );
+      },
+    );
+
+Widget answerHighLightSwitch() =>
+    BlocBuilder<AnswerhighlightCubit, AnswerhighlightState>(
+      builder: (context, state) {
+        return Transform.scale(
+          scale: 1.5,
+          child: Switch.adaptive(
+              value: state.answerhighlight,
+              onChanged: (answerhighlight) {
+                final answerHightLightToggleSwitch =
+                    BlocProvider.of<AnswerhighlightCubit>(context);
+                answerHightLightToggleSwitch.answerHighLight(answerhighlight);
+              }),
+        );
+      },
+    );
+
+Widget questionHighLightSwitch() =>
+    BlocBuilder<QuestionshighlightCubit, QuestionshighlightState>(
+      builder: (context, state) {
+        return Transform.scale(
+          scale: 1.5,
+          child: Switch.adaptive(
+              value: state.question,
+              onChanged: (question) {
+                final questionHighLightToggleSwitch =
+                    BlocProvider.of<QuestionshighlightCubit>(context);
+                questionHighLightToggleSwitch.questionHighLight(question);
               }),
         );
       },

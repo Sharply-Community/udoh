@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 part of 'taggedcubit_cubit.dart';
 
 abstract class TaggedcubitState extends Equatable {
@@ -12,8 +14,8 @@ class TaggedcubitInitial extends TaggedcubitState {}
 
 class Tagged extends TaggedcubitState {
   @override
-  final bool tagged;
-  const Tagged({required this.tagged});
+  bool tagged;
+  Tagged({required this.tagged});
 
   @override
   bool operator ==(Object other) {

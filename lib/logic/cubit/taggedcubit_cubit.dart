@@ -7,6 +7,6 @@ class TaggedcubitCubit extends Cubit<TaggedcubitState> {
   TaggedcubitCubit() : super(TaggedcubitInitial());
 
   taggedToggle(bool tagged) {
-    emit(const Tagged(tagged: true));
+    emit(Tagged(tagged: true));
   }
 }
