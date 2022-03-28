@@ -1,12 +1,17 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marriage/exports.dart';
 import 'package:marriage/logic/cubit/container_cubit.dart';
 import 'package:sizer/sizer.dart';
+import 'package:device_preview/device_preview.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const MarriageApp());
+  runApp(
+    DevicePreview(
+        enabled: !kReleaseMode, builder: (context) => const MarriageApp()),
+  );
 }
 
 class MarriageApp extends StatelessWidget {
@@ -17,9 +22,12 @@ class MarriageApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Sizer(
       builder: (context, orientation, deviceType) {
-        return const MaterialApp(
+        return MaterialApp(
+          useInheritedMediaQuery: true,
+          locale: DevicePreview.locale(context),
+          builder: DevicePreview.appBuilder,
           debugShowCheckedModeBanner: false,
-          home: PageControllerPage(),
+          home: const PageControllerPage(),
         );
       },
     );
