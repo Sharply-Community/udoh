@@ -13,11 +13,11 @@ class Groups extends StatelessWidget {
           child: Column(
         children: [
           const Headersetting(text: 'Groups'),
-          const PushHeader(text: 'Group Invites'),
+          const PushHeader(text: 'Subscriptions & Invitations'),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Swith(
-                text: 'Groups',
+                text: 'Group Invite',
                 string: 'Always notify me when someone sends an invite or ',
                 text2: 'accepts my invitation to a Group',
                 child: groupInviteSwitch()),

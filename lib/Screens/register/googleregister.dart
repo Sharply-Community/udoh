@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:marriage/exports.dart';
+import 'package:marriage/logic/cubit/controller_cubit.dart';
 
 class GoogleRegister extends StatelessWidget {
   const GoogleRegister({Key? key}) : super(key: key);
@@ -60,7 +62,10 @@ class GoogleRegister extends StatelessWidget {
                   onTap: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const HomePage())),
+                          builder: (context) => BlocProvider(
+                                create: (context) => ControllerCubit(),
+                                child: const PhoneRegister(),
+                              ))),
                   child: const LoginWidget(
                     background: Colors.white,
                     colorText: color,

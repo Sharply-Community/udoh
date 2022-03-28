@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:introduction_screen/introduction_screen.dart';
@@ -13,8 +14,6 @@ class IntroSliderPage extends StatefulWidget {
 }
 
 class _IntroSliderPageState extends State<IntroSliderPage> {
-  Gender? selectedIndex;
-
   final introKey = GlobalKey<IntroductionScreenState>();
 
   void _onIntroEnd(context) {
@@ -123,31 +122,39 @@ class _IntroSliderPageState extends State<IntroSliderPage> {
     List<PageViewModel> getPages() {
       return [
         PageViewModel(
-            title: "Marriage",
-            body: "Love recognizez no barriers. It jumps hurdles,"
-                " leaps fences, penetrate walls to, arrive at"
-                "its destination full of hope.",
-            decoration: pageDecoration,
-            image: _buildImage(
-              'boarding.webp',
-            ),
-            footer: buildFooter()),
-        PageViewModel(
           title: "Marriage",
-          body: "A successful marriage requires falling in love"
-              "many times, always with the same person.",
+          bodyWidget: const Text(
+            "Love recognizez no barriers. It jumps hurdles, leaps fences, penetrate walls to, arrive at its destination full of hope.",
+            style: TextStyle(
+                color: Colors.black, fontSize: 25, fontWeight: FontWeight.bold),
+          ),
           decoration: pageDecoration,
-          image: _buildImage('undraw_wedding.webp'),
-          footer: buildFooter(),
+          image: _buildImage(
+            'boarding.webp',
+          ),
         ),
         PageViewModel(
-            title: "Marriage",
-            body:
-                "Love doesn/'t just sit there, like a stone, it has to be made, "
-                "like bread; remade all the time, made new.",
-            decoration: pageDecoration,
-            image: _buildImage('undraw_winners.webp'),
-            footer: buildFooter()),
+          title: "Marriage",
+          bodyWidget: const Text(
+            "A successful marriage requires falling in love many times, always with the same person.",
+            style: TextStyle(
+                color: Colors.black, fontSize: 28, fontWeight: FontWeight.bold),
+          ),
+          decoration: pageDecoration,
+          image: _buildImage('undraw_wedding.webp'),
+          // footer: buildFooter(),
+        ),
+        PageViewModel(
+          title: "Marriage",
+          bodyWidget: const Text(
+            "Love doesn't just sit there, like a stone, it has to be made, like bread remade all the time, made new.",
+            style: TextStyle(
+                color: Colors.black, fontSize: 25, fontWeight: FontWeight.bold),
+          ),
+          decoration: pageDecoration,
+          image: _buildImage('undraw_winners.webp'),
+          // footer: buildFooter()
+        ),
         PageViewModel(
             title: "Marriage",
             body: "A great marriage isn/'t when the perfect "

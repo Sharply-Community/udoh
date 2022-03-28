@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:marriage/exports.dart';
+import 'package:marriage/logic/cubit/controller_cubit.dart';
 
 class GoogleLogin extends StatelessWidget {
   const GoogleLogin({Key? key}) : super(key: key);
@@ -56,12 +58,23 @@ class GoogleLogin extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                const LoginWidget(
-                  background: Colors.white,
-                  colorText: color,
-                  text: 'A',
-                  emailText1: 'Abdurrazzaq Abdulmuhsin',
-                  emailText2: 'abdurrazzaqabdulmuhsin7@gmail.com',
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => BlocProvider(
+                                  create: (context) => ControllerCubit(),
+                                  child: const PhoneLoginScreen(),
+                                )));
+                  },
+                  child: const LoginWidget(
+                    background: Colors.white,
+                    colorText: color,
+                    text: 'A',
+                    emailText1: 'Abdurrazzaq Abdulmuhsin',
+                    emailText2: 'abdurrazzaqabdulmuhsin7@gmail.com',
+                  ),
                 ),
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10),

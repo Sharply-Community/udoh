@@ -6,6 +6,6 @@ part 'acceptedpost_state.dart';
 class AcceptedpostCubit extends Cubit<AcceptedpostState> {
   AcceptedpostCubit() : super(AcceptedpostInitial());
   acceptedPost(bool acceptedpost) {
-    emit(AcceptedPost(acceptedpost: true));
+    emit(AcceptedPost(acceptedpost: acceptedpost));
   }
 }

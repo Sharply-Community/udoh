@@ -7,6 +7,6 @@ class GrouprecommendationCubit extends Cubit<GrouprecommendationState> {
   GrouprecommendationCubit() : super(GrouprecommendationInitial());
 
   groupRecommendation(bool grouprecommendation) {
-    emit(GroupRecommendation(grouprecommendation: true));
+    emit(GroupRecommendation(grouprecommendation: grouprecommendation));
   }
 }

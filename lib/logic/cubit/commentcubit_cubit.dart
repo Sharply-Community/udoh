@@ -7,6 +7,6 @@ class CommentcubitCubit extends Cubit<CommentcubitState> {
   CommentcubitCubit() : super(CommentcubitInitial());
 
   commentToggle(bool comment) {
-    emit(Comment(comment: true));
+    emit(Comment(comment: comment));
   }
 }

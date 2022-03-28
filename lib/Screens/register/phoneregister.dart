@@ -32,7 +32,6 @@ class _PhoneRegisterState extends State<PhoneRegister> {
                       BlocProvider.of<ControllerCubit>(context);
                   onboardingCubit.updateColor(controller);
                 },
-                maxLength: 11,
                 style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -44,7 +43,7 @@ class _PhoneRegisterState extends State<PhoneRegister> {
                       borderSide: const BorderSide(color: color, width: 2.0),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(color: color, width: 5.0),
+                      borderSide: const BorderSide(color: color, width: 2.0),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     prefix: const Padding(

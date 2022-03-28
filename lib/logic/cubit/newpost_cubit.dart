@@ -7,6 +7,6 @@ class NewpostCubit extends Cubit<NewpostState> {
   NewpostCubit() : super(NewpostInitial());
 
   newPost(bool newpost) {
-    emit(NewPost(newpost: true));
+    emit(NewPost(newpost: newpost));
   }
 }

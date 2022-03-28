@@ -35,10 +35,10 @@ class _EnterEmailState extends State<EnterEmail> {
               ),
               child: TextField(
                 controller: _emailController,
-                onChanged: (controller) {
+                onChanged: (emailText) {
                   final textController =
                       BlocProvider.of<ControllerCubit>(context);
-                  textController.updateColor(controller);
+                  textController.updateColor(emailText);
                 },
                 style:
                     const TextStyle(fontWeight: FontWeight.bold, fontSize: 24),

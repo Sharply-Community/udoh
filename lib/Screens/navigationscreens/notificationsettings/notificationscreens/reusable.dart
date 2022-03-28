@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:marriage/logic/cubit/acceptedpost_cubit.dart';
 import 'package:marriage/logic/cubit/answerhighlight_cubit.dart';
 import 'package:marriage/logic/cubit/commentcubit_cubit.dart';
+import 'package:marriage/logic/cubit/newanswer_cubit.dart';
+import 'package:marriage/logic/cubit/request_cubit.dart';
 import 'package:marriage/logic/cubit/groupinvite_cubit.dart';
 import 'package:marriage/logic/cubit/grouprecommendation_cubit.dart';
 import 'package:marriage/logic/cubit/messagecubit_cubit.dart';
@@ -219,6 +221,34 @@ class Swith extends StatelessWidget {
     );
   }
 }
+
+Widget requestQues() =>
+    BlocBuilder<RequestCubit, RequestState>(builder: (context, state) {
+      return Transform.scale(
+        scale: 1.5,
+        child: Switch.adaptive(
+            value: state.request,
+            onChanged: (generalQuestions) {
+              final generalQuestionToggleSwitch =
+                  BlocProvider.of<RequestCubit>(context);
+              generalQuestionToggleSwitch.requestQue(generalQuestions);
+            }),
+      );
+    });
+
+Widget newAnswer() =>
+    BlocBuilder<NewanswerCubit, NewanswerState>(builder: (context, state) {
+      return Transform.scale(
+        scale: 1.5,
+        child: Switch.adaptive(
+            value: state.newAnswer,
+            onChanged: (newAnswer) {
+              final newAnswerToogleSwitch =
+                  BlocProvider.of<NewanswerCubit>(context);
+              newAnswerToogleSwitch.newAnswer(newAnswer);
+            }),
+      );
+    });
 
 Widget messageSwitch() => BlocBuilder<MessagecubitCubit, MessagecubitState>(
       builder: (context, state) {

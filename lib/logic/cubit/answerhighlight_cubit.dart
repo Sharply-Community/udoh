@@ -7,6 +7,6 @@ class AnswerhighlightCubit extends Cubit<AnswerhighlightState> {
   AnswerhighlightCubit() : super(AnswerhighlightInitial());
 
   answerHighLight(bool answerhighlight) {
-    emit(AnswerHighLight(answerhighlight: true));
+    emit(AnswerHighLight(answerhighlight: answerhighlight));
   }
 }

@@ -7,6 +7,6 @@ class GroupinviteCubit extends Cubit<GroupinviteState> {
   GroupinviteCubit() : super(GroupinviteInitial());
 
   groupInvite(bool groupinvite) {
-    emit(GroupInvite(groupinvite: true));
+    emit(GroupInvite(groupinvite: groupinvite));
   }
 }

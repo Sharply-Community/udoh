@@ -27,7 +27,6 @@ class _PhoneLoginScreenState extends State<PhoneLoginScreen> {
             Container(
               padding: const EdgeInsets.only(left: 20, right: 20),
               child: TextFormField(
-                maxLength: 11,
                 onChanged: (controller) {
                   final changeColorCubit =
                       BlocProvider.of<ControllerCubit>(context);
